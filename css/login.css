@@ -1,0 +1,11 @@
+body,html{background: #fff;}
+.mui-content{background: #fff;}
+.logo{width: 100%;text-align: center;margin: 30px 0;}
+.login .mui-input-group:before{background-color:inherit;}
+.mui-input-row{border-radius: 10px;border: 1px solid #e5e5e5;box-shadow: 1px 1px 1px 1px #f1eee2 inset;width: 80%;margin: 15px auto;}
+.login .mui-input-group .mui-input-row:after{background-color:inherit;}
+.login .mui-input-group:after{background-color: inherit;}
+.login .mui-input-clear.mui-input{width: 80%;}
+.login .mui-btn-blue, .mui-btn-primary, input[type=submit]{width: 50%;border-radius: 14px;margin: 0 auto;background: #f8c120;border: 1px solid #f8c120;}
+.mui-icon{color:#f8c120;margin-left: 15px;}
+.link-area a{color:#f8c120 ;}
