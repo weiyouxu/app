@@ -1,0 +1,16 @@
+/*home*/
+
+.mui-table-view{margin-bottom: 50px;}
+.mui-content>.mui-table-view:first-child{margin-top: 0;}
+
+.mui-slider-indicator .mui-indicator{background: #fff;box-shadow: inherit;}
+.mui-slider-indicator .mui-active.mui-indicator{background: #f8c120;}
+
+.mui-grid-view.mui-grid-9 .mui-table-view-cell{border:none;}
+.mui-grid-view.mui-grid-9{background-color: #fff;}
+
+.mui-card{margin: 0;box-shadow: inherit;}
+.mui-card-content-inner{padding: 0;}
+
+.mui-card-content{padding:10px 15px;border-bottom: 1px solid #dddddd;}
+/*home*/

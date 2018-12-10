@@ -1,0 +1,14 @@
+body,html{width: 100%;height: 100%;background: #fff;}
+/*头部*/
+.mui-bar-nav{background: #f8c120;}
+.mui-bar-nav .mui-icon-search{position: absolute;right: 10px;}
+.mui-title{color: #000;}
+.mui-bar .mui-icon-plusempty{color: #fff;position: absolute;right: 10px;}
+a.mui-action-back{color:#fff;}
+/*主体*/
+.gray_spaces{width: 100%;height: 10px;background: #f1f1f1;}
+/*底部*/
+.mui-bar-tab .mui-tab-item.mui-active{color: #f8c120;}
+
+
+

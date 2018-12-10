@@ -1,0 +1,22 @@
+/*团购*/
+#list{overflow: hidden;}
+.mui-table-view-cell:after{background-color:inherit;}
+.mui-content>.mui-table-view:first-child{margin-top: 0;}
+.buy .mui-table-view-cell {float: left;text-align: center;color: #aeaeae;}
+.mui-table-view-chevron .mui-table-view-cell{padding-right: 0;}
+
+.buy-list{width: 100%;background: #f1f1f1;padding: 0;overflow: hidden;}
+.buy-list-li{width: 50%;float: left;}
+.mui-control-content{background: #fff;}
+.mui-grid-view.mui-grid-9{background: #fff;border: none;}
+.mui-grid-view.mui-grid-9 .mui-table-view-cell{border: none;}
+/*团购*/
+
+/*团购子页面*/
+a.mui-action-back{color:#000;}
+
+.buy-sort-title{background: #fff;padding: 10px;}
+.rank.mui-table-view:before{background-color:inherit;}
+.rank.mui-table-view:after{background-color:inherit;}
+.rank .mui-table-view-cell{padding-left:0;margin-left: 40px;border-bottom: 1px solid #dddddd;}
+.rank .mui-table-view-cell.mui-active{background: #fff;color:#fbe08f;}

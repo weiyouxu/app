@@ -1,0 +1,96 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="css/main.css"/>
+		<link rel="stylesheet" type="text/css" href="css/buy.css"/>
+		<script src="js/mui.min.js"></script>
+		<script type="text/javascript">
+			mui.init()
+		</script>
+	</head>
+
+	<body>
+		<!--主体-->
+		<div class="mui-content">
+			<!--tab切换-->
+			<ul id="list" class="mui-table-view buy">
+				<li class="mui-table-view-cell mui-col-sm-4 mui-col-xs-4" id="buy_near">
+					附近
+				</li>
+				<li class="mui-table-view-cell mui-col-sm-4 mui-col-xs-4" id="buy_sort">
+					分类
+				</li>
+				<li class="mui-table-view-cell mui-col-sm-4 mui-col-xs-4" id="buy_rank">
+					排序
+				</li>
+			</ul>
+			
+			<!--tab切换-->
+			<!--banner-->
+			<div id="">
+				<img src="img/home/img01.jpg"/>
+			</div>
+			<!--banner-->
+			<div class="gray_spaces"></div>
+			<!--list-->
+			<ul class="buy-list">
+				<li class="buy-list-li">
+					<div class="mui-card">
+						<div class="mui-card-header mui-card-media">
+							<img src="img/home/img01.jpg"/>
+						</div>
+						<div class="mui-card-content">
+							<div class="mui-card-content-inner">
+								<p style="color: #333;">这里显示文章摘要，让读者对文章内容有个粗略的概念...</p>
+							</div>
+						</div>
+						<div class="mui-card-footer">
+							<a class="mui-card-link">订：免费试听</a>
+							<a class="mui-card-link">❤</a>
+						</div>
+					</div>
+				</li>
+				<li class="buy-list-li">
+					<div class="mui-card">
+						<div class="mui-card-header mui-card-media">
+							<img src="img/home/img01.jpg"/>
+						</div>
+						<div class="mui-card-content">
+							<div class="mui-card-content-inner">
+								<p style="color: #333;">这里显示文章摘要，让读者对文章内容有个粗略的概念...</p>
+							</div>
+						</div>
+						<div class="mui-card-footer">
+							<a class="mui-card-link">订：免费试听</a>
+							<a class="mui-card-link">❤</a>
+						</div>
+					</div>
+				</li>
+			</ul>
+			
+		<!--list-->
+		</div>
+		<!--主体-->
+		<script type="text/javascript">
+			mui.plusReady(function(){
+				// 打开tab子页面
+				var clickId;
+				mui("#list").on("tap","li",function(){
+					clickId = this.id+".html";
+					mui.openWindow({
+						url:clickId,
+						id:clickId
+					})
+				})	
+				
+			});
+	
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <link href="css/mui.min.css" rel="stylesheet"/>
+    <link href="css/main.css" rel="stylesheet" type="text/css" />
+    
+    <script src="js/mui.min.js"></script>
+    <script type="text/javascript" charset="utf-8">
+      	mui.init();
+    </script>
+</head>
+<body>
+	<!--头部-->
+	<header class="mui-bar mui-bar-nav" id="indexHeader">
+	    <h1 class="mui-title">童享课</h1>
+	   	<span class="mui-icon mui-icon-search"></span>
+	</header>
+	<!--头部-->
+	
+	<!--底部-->
+	<nav class="mui-bar mui-bar-tab">
+	    <a class="mui-tab-item mui-active" href="home.html">
+	        <span class="mui-icon mui-icon-chatbubble"></span>
+	        <span class="mui-tab-label">首页</span>
+	    </a>
+	    <a class="mui-tab-item" href="wish.html">
+	        <span class="mui-icon mui-icon-contact"></span>
+	        <span class="mui-tab-label">心愿单</span>
+	    </a>
+	    <a class="mui-tab-item" href="buy.html">
+	        <span class="mui-icon mui-icon-pengyouquan"></span>
+	        <span class="mui-tab-label">团购</span>
+	    </a>
+	    <a class="mui-tab-item" href="me.html">
+	        <span class="mui-icon mui-icon-person"></span>
+	        <span class="mui-tab-label">我</span>
+	    </a>
+	</nav>
+	<!--底部-->
+	<script type="text/javascript">
+		//定义页面路径和样式
+		var pagesArray = ["home.html","wish.html","buy.html","me.html"];
+		var pagesStyle = {
+			top:"44px",
+			bottom:"50px"
+		};
+		//mui加载硬件系统准备完毕
+		mui.plusReady(function(){
+			//当前的窗体
+			var self = plus.webview.currentWebview();
+			for(var i = 0; i<pagesArray.length;i++){
+				//创建窗体 当前窗体url，当前窗体id，当前窗体的样式，页面传参
+				var sub = plus.webview.create(pagesArray[i],pagesArray[i],pagesStyle);
+				//先把所有窗体影藏，再把创建的页面 创建进入页面
+				sub.hide();
+				self.append(sub);	
+			}
+			//第一个子页面默认显示
+			plus.webview.show(pagesArray[0]);
+			//点击底部，切换页面
+			mui('.mui-bar-tab').on('tap','a',function(){
+				//取当前点击元素的，获取当前元素的href属性
+				var tagPage = this.getAttribute('href');
+				//显示点击的底部，当前元素对应的HTML，动画效果，动画时间
+				plus.webview.show(tagPage,"fade-in",500);
+			});
+		});
+	</script>
+</body>
+</html>
