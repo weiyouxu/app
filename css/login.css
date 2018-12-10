@@ -9,3 +9,6 @@ body,html{background: #fff;}
 .login .mui-btn-blue, .mui-btn-primary, input[type=submit]{width: 50%;border-radius: 14px;margin: 0 auto;background: #f8c120;border: 1px solid #f8c120;}
 .mui-icon{color:#f8c120;margin-left: 15px;}
 .link-area a{color:#f8c120 ;}
+.login-go{width: 80%;margin: 15px auto 30px;}
+#reg{width: 48%;display: inline-block;text-align: left;}
+#forgetPassword{width: 48%;display: inline-block;text-align: right;}
