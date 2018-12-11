@@ -24,8 +24,8 @@
 							<div class="me-name">Tom_1220</div>
 							<div class="me-info">查看并编辑个人资料</div>
 						</div>
-						<div id="" class="meinfro-img mui-col-xs-4 mui-col-sm-4">
-							<img src="img/home/img01.jpg"/>
+						<div id="meinfro-img" class="meinfro-img mui-col-xs-4 mui-col-sm-4">
+							<a href="#picture"><img id="meHead" src="img/home/img01.jpg"/></a>
 						</div>
 					</div>
 				</div>
@@ -76,8 +76,66 @@
 					</li>
 				</ul>
 			</div>
+			<div id="picture" class="mui-popover mui-popover-action mui-popover-bottom">
+				<ul class="mui-table-view">
+					<li class="mui-table-view-cell">
+						<a id="camera" href="#">拍照</a>
+					</li>
+					<li class="mui-table-view-cell">
+						<a id="album" href="#">相册</a>
+					</li>
+				</ul>
+				<ul class="mui-table-view">
+					<li class="mui-table-view-cell">
+						<a href="#picture"><b>取消</b></a>
+					</li>
+				</ul>
+			</div>
 		</div>
 		<!--主体-->
+		<script>
+			mui.plusReady(function(){
+
+				// 打开底部菜单
+				mui('body').on('shown', '.mui-popover', function(e) {
+					//console.log('shown', e.detail.id);//detail为当前popover元素
+				});
+				// 关闭底部菜单
+				mui('body').on('hidden', '.mui-popover', function(e) {
+					//console.log('hidden', e.detail.id);//detail为当前popover元素
+				});
+
+				var meHead = document.getElementById("meHead");
+				// 相册
+				var alm = document.getElementById("album");
+				alm.addEventListener("tap",function(){
+					// 调用相册功能 path为图片路径
+					plus.gallery.pick(function(path){
+						meHead.src = path;	
+					},
+					function(e){
+						meHead.src = e.Message;
+					},
+					{
+						filter:"none",
+						// multiple:true
+					}
+					);
+				});
+				
+				var cam = document.getElementById("camera");
+				cam.addEventListener('tap',function(){
+					//获取摄像头 0为前置摄像头，1为后置摄像头
+					var cm = plus.camera.getCamera(1);
+					cm.captureImage(function(path){
+						//获取本地拍照的路径
+						var url = "file://"+plus.io.convertLocalFileSystemURL(path);
+						meHead.src = url;
+					})
+				});
+				
+			});
+		</script>
 	</body>
 
 </html>
