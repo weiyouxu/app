@@ -98,6 +98,7 @@
 
 				// 打开底部菜单
 				mui('body').on('shown', '.mui-popover', function(e) {
+					
 					//console.log('shown', e.detail.id);//detail为当前popover元素
 				});
 				// 关闭底部菜单
@@ -109,8 +110,10 @@
 				// 相册
 				var alm = document.getElementById("album");
 				alm.addEventListener("tap",function(){
+					mui('.mui-popover-action').popover('toggle');
 					// 调用相册功能 path为图片路径
 					plus.gallery.pick(function(path){
+						
 						meHead.src = path;	
 					},
 					function(e){
@@ -125,6 +128,7 @@
 				
 				var cam = document.getElementById("camera");
 				cam.addEventListener('tap',function(){
+					mui('.mui-popover-action').popover('toggle');
 					//获取摄像头 0为前置摄像头，1为后置摄像头
 					var cm = plus.camera.getCamera(1);
 					cm.captureImage(function(path){
