@@ -37,6 +37,7 @@
 	</head>
 
 	<body>
+		<!-- 注册账号页面 -->
 		<header class="mui-bar mui-bar-nav">
 			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
 			<h1 class="mui-title">注册</h1>
@@ -94,15 +95,41 @@
 							if (err) {
 								plus.nativeUI.toast(err);
 								return;
+							}else{
+								alert(222)
+								console.log(regInfo.account);
+								mui.ajax('api/index.php',{
+									data:{
+										name:regInfo.account,
+										password:regInfo.password,
+										email:regInfo.email
+									},
+									dataType:'json',//服务器返回json格式数据
+									type:'POST',//HTTP请求类型
+									timeout:10000,//超时时间设置为10秒；
+									headers:{'contetn-type':'application/json'},	              
+									success:function(data){
+										//服务器返回响应，根据响应结果，分析是否登录成功；
+										alert(123)
+									},
+									error:function(xhr,type,errorThrown){
+										//异常处理；
+										alert(333)
+										console.log(type);
+									}
+								});
+							
+								
 							}
-							plus.nativeUI.toast('注册成功');
-							$.openWindow({
-								url: 'login.html',
-								id: 'login',
-								show: {
-									aniShow: 'pop-in'
-								}
-							});
+						
+// 							plus.nativeUI.toast('注册成功');
+// 							$.openWindow({
+// 								url: 'login.html',
+// 								id: 'login',
+// 								show: {
+// 									aniShow: 'pop-in'
+// 								}
+// 							});
 						});
 					});
 				});

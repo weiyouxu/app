@@ -97,6 +97,7 @@
 	</head>
 
 	<body>
+		<!-- 登录页面 -->
 		<div class="mui-content login">
 			<div class="logo">
 				<img src="img/home/img01.jpg"/>
@@ -135,6 +136,44 @@
 					statusBarBackground: '#f7f7f7'
 				});
 				$.plusReady(function() {
+					
+					var reg = document.getElementById("reg");
+					reg.addEventListener("tap",function(){
+						$.openWindow({
+							url: 'reg.html',
+							id: 'reg.html',
+							preload: true,
+							show: {
+								aniShow: 'pop-in'
+							},
+							styles: {
+								popGesture: 'hide'
+							},
+							waiting: {
+								autoShow: false
+							}
+						});
+					},false);
+					
+					var forgetPassword = document.getElementById("forgetPassword");
+					forgetPassword.addEventListener("tap",function(){
+						$.openWindow({
+							url: 'forget_password.html',
+							id: 'forget_password.html',
+							preload: true,
+							show: {
+								aniShow: 'pop-in'
+							},
+							styles: {
+								popGesture: 'hide'
+							},
+							waiting: {
+								autoShow: false
+							}
+						});
+					},false);
+				
+					
 					plus.screen.lockOrientation("portrait-primary");
 					var settings = app.getSettings();
 					var state = app.getState();
@@ -223,7 +262,7 @@
 					setTimeout(function() {
 						//关闭 splash
 						plus.navigator.closeSplashscreen();
-					}, 600);
+					}, 600);	
 					//检查 "登录状态/锁屏状态" 结束
 					var loginButton = doc.getElementById('login');
 					var accountBox = doc.getElementById('account');

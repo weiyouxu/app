@@ -13,10 +13,14 @@
     </script>
 </head>
 <body>
+	<!-- 首页头部和底部 -->
 	<!--头部-->
 	<header class="mui-bar mui-bar-nav" id="indexHeader">
 	    <h1 class="mui-title">童享课</h1>
 	   	<span class="mui-icon mui-icon-search"></span>
+		<div class="mui-input-row mui-search">
+			<input type="search" class="mui-input-clear" placeholder="">
+		</div>
 	</header>
 	<!--头部-->
 	<!--底部-->
@@ -66,6 +70,10 @@
 				//显示点击的底部，当前元素对应的HTML，动画效果，动画时间
 				plus.webview.show(tagPage,"fade-in",500);
 			});
+			
+// 			mui('.mui-bar-nav').on('tap','.mui-icon-search',function(){
+// 				mui('.mui-input-row').popover('toggle');
+// 			})
 		});
 	</script>
 </body>
