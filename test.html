@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html class="ui-page-login">
+<html>
 
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-		<title></title>
+		<title>1233</title>
 		<link href="css/mui.min.css" rel="stylesheet" />
 	</head>
 
@@ -16,6 +16,11 @@
 		<div id="reg">
 			注册
 		</div>
+		
+		注册邮箱：<input type="" name="" id="forPwd" value="" /><br>
+		<div id="forgetPassword">
+			忘记密码
+		</div>
 		<script src="js/mui.min.js"></script>
 		<script src="js/mui.enterfocus.js"></script>
 		<script src="js/app.js"></script>
@@ -23,69 +28,94 @@
 		<script type="text/javascript">
 		$(function () {
 			$('#reg').click(function(){
-				var account = document.getElementById("account");
-				var password = document.getElementById("password");
-				var email = document.getElementById("email");
+// 				var account = document.getElementById("account");
+// 				var password = document.getElementById("password");
+// 				var email = document.getElementById("email");
+// 					
+// 				var postData = {
+// 					name: account.value,
+// 					password: password.value,
+// 					email: email.value
+// 				};
+// 				
+// 				var oStr = '';
+// 				var oAjax = null;
+// 				//post提交的数据
+// 				// postData = {"name":"1111","password":"name","email":"11@qq.com"};
+// 				//这里需要将json数据转成post能够进行提交的字符串  name1=value1&name2=value2格式
+// 				postData = (function(value){
+// 				　　for(var key in value){
+// 				　　　　oStr += key+"="+value[key]+"&";
+// 				　　};
+// 				　　return oStr;
+// 				}(postData));
+// 				console.log(postData)
+// 				//这里进行HTTP请求
+// 				try{
+// 				　　oAjax = new XMLHttpRequest();
+// 				}catch(e){
+// 				　　oAjax = new ActiveXObject("Microsoft.XMLHTTP");
+// 				};
+// 				//post方式打开文件
+// 				oAjax.open('post','http://www.local.com/huolanApp/api/index.php?='+Math.random(),true);
+// 				//post相比get方式提交多了个这个
+// 				oAjax.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+// 				//post发送数据
+// 				oAjax.send(postData);
+// 				oAjax.onreadystatechange = function(){
+// 				　　//当状态为4的时候，执行以下操作
+// 				　　if(oAjax.readyState == 4){
+// 				　　　　try{
+// 				　　　　　　alert(oAjax.responseText);
+// 				　　　　}catch(e){
+// 				　　　　　　alert('你访问的页面出错了');
+// 				　　　　};
+// 				　　};
+// 				};
+					$.ajax({
+						type: 'post',
+						url: 'api/index.php',
+						data: {
+							name: 'ip123',
+							password: 'name',
+							email: '11@qq.com'
+						},
+						success: function(data) {
+							console.log(data);
+							console.log("注册成功")
+						},
+						error: function(data) {
+							console.log(data)
+							console.log("注册失败")
+						}
+					});
 					
-				var postData = {
-					name: account.value,
-					password: password.value,
-					email: email.value
-				};
-				
-				var oStr = '';
-				var oAjax = null;
-				//post提交的数据
-				// postData = {"name":"1111","password":"name","email":"11@qq.com"};
-				//这里需要将json数据转成post能够进行提交的字符串  name1=value1&name2=value2格式
-				postData = (function(value){
-				　　for(var key in value){
-				　　　　oStr += key+"="+value[key]+"&";
-				　　};
-				　　return oStr;
-				}(postData));
-				console.log(postData)
-				//这里进行HTTP请求
-				try{
-				　　oAjax = new XMLHttpRequest();
-				}catch(e){
-				　　oAjax = new ActiveXObject("Microsoft.XMLHTTP");
-				};
-				//post方式打开文件
-				oAjax.open('post','api/index.php?='+Math.random(),true);
-				//post相比get方式提交多了个这个
-				oAjax.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-				//post发送数据
-				oAjax.send(postData);
-				oAjax.onreadystatechange = function(){
-				　　//当状态为4的时候，执行以下操作
-				　　if(oAjax.readyState == 4){
-				　　　　try{
-				　　　　　　alert(oAjax.responseText);
-				　　　　}catch(e){
-				　　　　　　alert('你访问的页面出错了');
-				　　　　};
-				　　};
-				};
-// 					$.ajax({
-// 						type: 'post',
-// 						url: 'api/index.php',
-// 						data: {
-// 							"name": 'ip123',
-// 							"password": 'name',
-// 							"email": '11@qq.com'
-// 						},
-// 						success: function(data) {
-// 							console.log(data);
-// 							console.log("注册成功")
-// 						},
-// 						error: function(data) {
-// 							console.log(data)
-// 							console.log("注册失败")
-// 						}
-// 					});
+					
+					
 				})
-// 			   
+ 			 var forPwdVal = "";
+			$("#forgetPassword").click(function(){
+				forPwdVal = String($("#forPwd").val());
+				console.log(forPwdVal);
+				
+				$.ajax({
+					type: 'post',
+					dataTape:"json",
+					url: 'http://172.16.1.23/huolanApp/api/index.php',
+					data: {
+						"type": 'forgetPassword',
+						"email": forPwdVal
+					},
+					success: function(data) {
+						console.log("查询结果")
+						console.log(data);
+					},
+					error: function(data) {
+						console.log("没有找到结果")
+						console.log(data)
+					}
+				});
+			})
 		});
 			
 
