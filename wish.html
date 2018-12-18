@@ -24,16 +24,15 @@
 		<!--主体-->
 		<div class="mui-content">
 			<div class="carBox">
-				<img id="car" class="car" src="img/wish/car.jpg" >
-				<img id=""  onclick="clickLeft3()" class="carDoorLeft" src="img/wish/left_door.png" >
-				
-				<img id="" onclick="clickRight()" class="carDoorRight" src="img/wish/right_door.png" >
-				<img class="leftDoor" src="img/wish/left_door.gif" >
-				<!-- <img class="rightDoor" src="img/wish/right_door.gif" > -->
-			</div>
-			<div class="carBox2">
+				<div class="car1"></div>  
+				<div class="car2"></div>
 				<div class="car3"></div>
-				<img id=""  onclick="clickLeft4()" class="carDoorLeft2" src="img/wish/left_door.png" >
+				<img id=""  onclick="clickLeftOpen()" class="carDoorLeft" src="img/wish/left_door.png" >
+				
+				<img id=""  onclick="clickLeftClose()" class="carDoorLeft2" src="img/wish/left_door.png" >
+				
+				<img id="" onclick="clickRightOpen()" class="carDoorRight" src="img/wish/right_door.png" >
+				<img id="" onclick="clickRightClose()" class="carDoorRight2" src="img/wish/right_door.png" >
 			</div>
 		</div>
 		<!--主体-->
@@ -42,163 +41,93 @@
 // 			mui.plusReady(function(){
 // 				
 // 			});
-// 			
-// 			var carDoorRight = document.getElementById("carDoorRight");
-	
-			// 点击左门按钮,do soming
-			function clickLeft(){
-				document.querySelector('.car').setAttribute('src', 'img/wish/car.gif');
-			}
-			// 点击右门按钮,do soming
-			function clickRight(){
-				document.querySelector('.car').setAttribute('src', 'img/wish/right_door.gif');
-			}
-			//实现图片的预加载
-			function preloadImg(srcArr){
-				if(srcArr instanceof Array){
-					for(var i=0; i<srcArr.length; i++){
-						var oImg = new Image();
-						oImg.src = srcArr[i];
-					}
-				}
-			}
-			var arr = [];
-			for(var j = 0; j<62;j++){
-				if(j<10){
-					j = "0"+j;
-				}else{
-					j = j
-				}
-				arr.push("img/wish/left/leftwingdoor00"+j+".png");
-				// console.log(arr)
-			}
-			//预加载图片
-			preloadImg(arr); 
-			var tl3 = new TimelineMax({});
-			var t = 0.065;
 
-			tl3.to($('.car3'), t, { "background-image": "url('img/wish/left/leftwingdoor0000.png')"  });
-			tl3.to($('.car3'), t, { "background-image": "url('img/wish/left/leftwingdoor0001.png')" });
-			tl3.to($('.car3'), t, { "background-image": "url('img/wish/left/leftwingdoor0002.png')" });
-			tl3.to($('.car3'), t, { "background-image": "url('img/wish/left/leftwingdoor0003.png')" });
-			tl3.to($('.car3'), t, { "background-image": "url('img/wish/left/leftwingdoor0004.png')" });
-			tl3.to($('.car3'), t, { "background-image": "url('img/wish/left/leftwingdoor0005.png')" });
-			tl3.to($('.car3'), t, { "background-image": "url('img/wish/left/leftwingdoor0006.png')" });
-			tl3.to($('.car3'), t, { "background-image": "url('img/wish/left/leftwingdoor0007.png')" });
-			tl3.to($('.car3'), t, { "background-image": "url('img/wish/left/leftwingdoor0008.png')" });
-			tl3.to($('.car3'), t, { "background-image": "url('img/wish/left/leftwingdoor0009.png')" });
-			tl3.to($('.car3'), t, { "background-image": "url('img/wish/left/leftwingdoor0010.png')" });
-			tl3.to($('.car3'), t, { "background-image": "url('img/wish/left/leftwingdoor0011.png')"  });
-			tl3.to($('.car3'), t, { "background-image": "url('img/wish/left/leftwingdoor0012.png')"  });
-			tl3.to($('.car3'), t, { "background-image": "url('img/wish/left/leftwingdoor0013.png')"  });
-			tl3.to($('.car3'), t, { "background-image": "url('img/wish/left/leftwingdoor0014.png')"  });
-			tl3.to($('.car3'), t, { "background-image": "url('img/wish/left/leftwingdoor0015.png')"  });
-			tl3.to($('.car3'), t, { "background-image": "url('img/wish/left/leftwingdoor0016.png')"  });
-			tl3.to($('.car3'), t, { "background-image": "url('img/wish/left/leftwingdoor0017.png')"  });
-			tl3.to($('.car3'), t, { "background-image": "url('img/wish/left/leftwingdoor0018.png')"  });
-			tl3.to($('.car3'), t, { "background-image": "url('img/wish/left/leftwingdoor0019.png')"  });
-			tl3.to($('.car3'), t, { "background-image": "url('img/wish/left/leftwingdoor0020.png')"  });
-			tl3.to($('.car3'), t, { "background-image": "url('img/wish/left/leftwingdoor0021.png')"  });
-			tl3.to($('.car3'), t, { "background-image": "url('img/wish/left/leftwingdoor0022.png')"  });
-			tl3.to($('.car3'), t, { "background-image": "url('img/wish/left/leftwingdoor0023.png')"  });
-			tl3.to($('.car3'), t, { "background-image": "url('img/wish/left/leftwingdoor0024.png')"  });
-			tl3.to($('.car3'), t, { "background-image": "url('img/wish/left/leftwingdoor0025.png')"  });
-			tl3.to($('.car3'), t, { "background-image": "url('img/wish/left/leftwingdoor0026.png')"  });
-			tl3.to($('.car3'), t, { "background-image": "url('img/wish/left/leftwingdoor0027.png')"  });
-			tl3.to($('.car3'), t, { "background-image": "url('img/wish/left/leftwingdoor0028.png')"  });
-			tl3.to($('.car3'), t, { "background-image": "url('img/wish/left/leftwingdoor0029.png')"  });
-			tl3.to($('.car3'), t, { "background-image": "url('img/wish/left/leftwingdoor0030.png')"  });
-			tl3.to($('.car3'), t, { "background-image": "url('img/wish/left/leftwingdoor0031.png')"  });
-			tl3.to($('.car3'), t, { "background-image": "url('img/wish/left/leftwingdoor0032.png')"  });
-			tl3.to($('.car3'), t, { "background-image": "url('img/wish/left/leftwingdoor0033.png')"  });
-			tl3.to($('.car3'), t, { "background-image": "url('img/wish/left/leftwingdoor0034.png')"  });
-			tl3.to($('.car3'), t, { "background-image": "url('img/wish/left/leftwingdoor0035.png')"  });
-			tl3.to($('.car3'), t, { "background-image": "url('img/wish/left/leftwingdoor0036.png')"  });
-			tl3.to($('.car3'), t, { "background-image": "url('img/wish/left/leftwingdoor0037.png')"  });
-			tl3.to($('.car3'), t, { "background-image": "url('img/wish/left/leftwingdoor0038.png')"  });
-			tl3.to($('.car3'), t, { "background-image": "url('img/wish/left/leftwingdoor0039.png')"  });
-			tl3.to($('.car3'), t, { "background-image": "url('img/wish/left/leftwingdoor0040.png')"  });
-			tl3.to($('.car3'), t, { "background-image": "url('img/wish/left/leftwingdoor0041.png')"  });
-			tl3.to($('.car3'), t, { "background-image": "url('img/wish/left/leftwingdoor0042.png')"  });
-			tl3.to($('.car3'), t, { "background-image": "url('img/wish/left/leftwingdoor0043.png')"  });
-			tl3.to($('.car3'), t, { "background-image": "url('img/wish/left/leftwingdoor0044.png')"  });
-			tl3.to($('.car3'), t, { "background-image": "url('img/wish/left/leftwingdoor0045.png')"  });
-			tl3.to($('.car3'), t, { "background-image": "url('img/wish/left/leftwingdoor0046.png')"  });
-			tl3.to($('.car3'), t, { "background-image": "url('img/wish/left/leftwingdoor0047.png')"  });
-			tl3.to($('.car3'), t, { "background-image": "url('img/wish/left/leftwingdoor0048.png')"  });
-			tl3.to($('.car3'), t, { "background-image": "url('img/wish/left/leftwingdoor0049.png')"  });
-			tl3.to($('.car3'), t, { "background-image": "url('img/wish/left/leftwingdoor0050.png')"  });
-			tl3.to($('.car3'), t, { "background-image": "url('img/wish/left/leftwingdoor0051.png')"  });
-			tl3.to($('.car3'), t, { "background-image": "url('img/wish/left/leftwingdoor0052.png')"  });
-			tl3.to($('.car3'), t, { "background-image": "url('img/wish/left/leftwingdoor0053.png')"  });
-			tl3.to($('.car3'), t, { "background-image": "url('img/wish/left/leftwingdoor0054.png')"  });
-			tl3.to($('.car3'), t, { "background-image": "url('img/wish/left/leftwingdoor0055.png')"  });
-			tl3.to($('.car3'), t, { "background-image": "url('img/wish/left/leftwingdoor0056.png')"  });
-			tl3.to($('.car3'), t, { "background-image": "url('img/wish/left/leftwingdoor0057.png')"  });
-			tl3.to($('.car3'), t, { "background-image": "url('img/wish/left/leftwingdoor0058.png')"  });
-			tl3.to($('.car3'), t, { "background-image": "url('img/wish/left/leftwingdoor0059.png')"  });
-			tl3.to($('.car3'), t, { "background-image": "url('img/wish/left/leftwingdoor0060.png')"  });
-			tl3.stop();
-			
-			function clickLeft3(){
-				// tl3.pause();
-				tl3.play();
-				// tl4.play();
-			}
-			function clickLeft4(){
-				// tl3.pause();
-				tl3.reverse();
-				// tl4.reverse();
-			}
-		
-			
-			var tl4 = new TimelineMax({});
-			console.log(arr[0])
-			
-			tl4.to($('.car3'),1,{"background-image":"url('img/wish/left/leftwingdoor0003.png')"});
-			// $('.car3').attr("src","img/wish/left/leftwingdoor0001.png")
-// 			tl4.to($('.carDoorLeft'),1,{left:"150px"});
-// 			tl4.to($('.carDoorLeft'),1,{top:"150px"});
-// 			tl4.to($('.carDoorLeft'),1,{left:"20px"});
-			tl4.stop();
-// 			var tl3 = new TimelineMax({});
-// 			var tl4 = new TimelineMax({});
-// 
-// 			function clickLeft3(){
-// 				tl4.kill();
-// 				for (var k = 0; k < 61; k++) {
-// 					 if(k<10){
-// 					 	k = "0"+k;
-// 					 }else{
-// 					 	k = k;
-// 					 }
-//                     updatePicScene(k);
-//                 }	
-// 			}
-// 			function updatePicScene(k) {
-// 				var t = 0.065;
-// 				tl3.to($('.car3'), t, { onComplete: function() { $('.car3').attr("src", "img/wish/left/leftwingdoor00" + k + ".png") } });
-// 			}
-// 			
-// 		
-// 			function clickLeft4(){
-// 				tl3.kill();
-// 				for (var l = 60; l > 0; l--) {
-// 					if(l<10){
-// 						l = "0"+l;
-// 					}else{
-// 						l = l;
+// 			//实现图片的预加载
+// 			function preloadImg(srcArr){
+// 				if(srcArr instanceof Array){
+// 					for(var i=0; i<srcArr.length; i++){
+// 						var oImg = new Image();
+// 						oImg.src = srcArr[i];
 // 					}
-// 					resPicScene(l);
-// 				}	
+// 				}
 // 			}
-// 			function resPicScene(l) {
-// 				var t = 0.065;
-// 				console.log("img/wish/left/leftwingdoor00" + l + ".png")
-// 				tl4.to($('.car3'), t, { onComplete: function() { $('.car3').attr("src", "img/wish/left/leftwingdoor00" + l + ".png") } });
+// 			var arr = [];
+// 			var arr2 = [];
+// 			for(var j = 0; j<60;j++){
+// 				if(j<10){
+// 					j = "0"+j;
+// 				}else{
+// 					j = j
+// 				}
+// 				arr.push("img/wish/left/leftwingdoor00"+j+".png");
+// 				arr2.push("img/wish/right/rightwingdoor00"+j+".png")
+// 				// console.log(arr)
 // 			}
+// 			//预加载图片
+// 			preloadImg(arr);
+// 			preloadImg(arr2);
 			
+			var imgar = [];
+			var imgar2 = [];
+		    function eightimg(){
+			    for(o=0;o<60;o++){
+			    	imgar[o] = new Image();
+					imgar2[o] = new Image();
+			        imgar[o].src = "img/wish/left/leftwingdoor00"+o+".png"; 
+					imgar2[o].src = "img/wish/right/rightwingdoor00"+o+".png"; 
+			        imgar[o].onload=function(){
+				        this.width = 1280;
+				        this.height =720;
+			       };
+					imgar2[o].onload=function(){
+				        this.width = 1280;
+				        this.height =720;
+			       } 
+			     }
+		    }
+			eightimg(); 
 			
+			// 左门动画
+			var tl1 = new TimelineMax({});
+			var t = 0.02;
+			for(var i = 0; i<60;i++){
+				if(i<10){
+					i = "0"+i;
+				}else{
+					i = i;
+				}
+				tl1.to($('.car2'), t, { "background-image": "url('img/wish/left/leftwingdoor00"+i+".png')"  });
+			}
+			tl1.stop();
+			
+			function clickLeftOpen(){
+				tl1.play();
+			}
+			function clickLeftClose(){
+				tl1.reverse();
+			}
+			// 左门动画
+			 
+			// 右门动画
+			var tl2 = new TimelineMax({});
+			var t2 = 0.02;
+			for(var k = 0; k<60;k++){
+				if(k<10){
+					k = "0"+k;
+				}else{
+					k = k;
+				}
+				tl2.to($('.car3'), t2, { "background-image": "url('img/wish/right/rightwingdoor00"+k+".png')"  });
+			}
+			tl2.stop();
+			
+			function clickRightOpen(){
+				tl2.play();
+			}
+			function clickRightClose(){
+				tl2.reverse();
+			}
+			// 右门动画
 		</script>
 	</body>
 
