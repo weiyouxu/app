@@ -1,0 +1,45 @@
+.navClose{margin: 0 35% 0 5%;}
+.electricity {width: 20%; margin-left: 14%;}
+
+.carTitle{font-size: 16px;}
+.carBox,.chairBox,.suspensionBox,.driveBox,.weatherBox,.journeyBox,.showBox,.powerBox{height: 500px;}
+.carTitle{height: 500px;}
+.carTitleUl{height: 100%;    padding-bottom: 0px;}
+.carTitleUl li {height: 12.5%;line-height: 34px;}
+.car1, .car2, .car3{height: 405px;}
+.carDoorLeft{top: 65%;left: 5%;}
+.carDoorLeft2{top:78%;left: 12%;}
+.carDoorRight{top: 65%;right: 5%;}
+.carDoorRight2{top: 78%;right: 12%;}
+.driver{left: 14%;}
+.copilot{right:15%}
+
+.allClose{bottom:40%;width: 34%;left: 31%;}
+.forward_box{bottom: 13%;width: 34%;left: 31%;}
+.trunk{bottom:3%;width: 34%;left: 31%;}
+.carShadow{width: 57%;bottom: 23%;left: 22%;}
+
+
+.threePieces{height: 430px;}
+.deng01 img,.deng02 img{width: 30%;}
+.deng03{width: 14%;}
+.deng04{width: 14%;left: 35%;}
+.deng05{width: 14%;}
+.deng06{width: 14%;}
+.deng05 img,.deng06 img{width: 16%;}
+.deng07{width: 17%;}
+.deng08{width: 58%;}
+.deng08 img{width: 40%;}
+.deng08_03 img{width: 28%;}
+
+
+.footerSeetingUl{height: 150px;}
+.li1{margin: 50px auto 0;;}
+.leftAirconditionTemperature{margin: 46% 0 50% 0;}
+.rightAirconditionTemperature{margin: 46% 0 50% 0;}
+.icon07,.icon09{margin: 100% auto 0;}
+.leftSeatTemperature{font-size: 16px;position: absolute;top: 52px;right: 20px;}
+.rightSeatTemperature{font-size: 16px;position: absolute;top: 52px;left: 20px;}
+.icon12{margin: 42% auto;}
+.li5 span{font-size: 14px;}
+.icon08{margin: 50% auto 5px;}

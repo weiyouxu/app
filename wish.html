@@ -8,6 +8,8 @@
 		<link href="css/mui.min.css" rel="stylesheet" />
 		<link rel="stylesheet" type="text/css" href="css/main.css"/>
 		<link rel="stylesheet" type="text/css" href="css/wish.css"/>
+		<link rel="stylesheet" type="text/css" href="css/wishIpad.css"  media="screen and (min-width: 768px) and (max-width: 1023px)">
+		<link rel="stylesheet" type="text/css" href="css/wishIpad1024.css"  media="screen and (min-width: 1024px) and (max-width: 1200px)">
 		<script src="js/jquery-1.7.2.min.js" type="text/javascript" charset="utf-8"></script>
 		<script src="js/TimelineLite.js" type="text/javascript" charset="utf-8"></script>
 		<script src="js/TimelineMax.js" type="text/javascript" charset="utf-8"></script>
@@ -23,54 +25,414 @@
 		<!-- 心愿单页面 -->
 		<!--主体-->
 		<div class="mui-content">
-			<div class="carBox">
-				<div class="car1"></div>  
-				<div class="car2"></div>
-				<div class="car3"></div>
-				<img id=""  onclick="clickLeftOpen()" class="carDoorLeft" src="img/wish/left_door.png" >
-				
-				<img id=""  onclick="clickLeftClose()" class="carDoorLeft2" src="img/wish/left_door.png" >
-				
-				<img id="" onclick="clickRightOpen()" class="carDoorRight" src="img/wish/right_door.png" >
-				<img id="" onclick="clickRightClose()" class="carDoorRight2" src="img/wish/right_door.png" >
+			<div class="main">
+				<!-- 头部 -->
+				<div class="nav">
+					<span class="navClose"><!-- <img class="navCloseImg" src="img/wish/close.png" > --></span>
+					<span class="control navActive">控制</span>
+					<!-- <span class="setting">设置</span> -->
+					<span class="electricity navActive"><img src="img/wish/electricity.png" >充电</span>
+				</div>
+				<!-- 第二块内容 -->
+				<div class="secondPieces">
+					<div class="carTitle">
+						<ul class="carTitleUl">
+							<li class="navActive" data-name="carDoor">
+								<p class="paadingRight10">车门</p>
+								<img src="img/wish/line.png" >
+							</li>
+							
+							<li data-name="carChair">
+								<p class="paadingRight10">座椅</p>
+								<img src="img/wish/line.png" >
+							</li>
+							<li data-name="carSuspension">
+								<p class="paadingRight10">悬架</p>
+								<img src="img/wish/line.png" >
+							</li>
+							<li data-name="carDrive">
+								<p class="paadingRight10">驾驶</p>
+								<img src="img/wish/line.png" >
+							</li>
+							<li data-name = "carWeather">
+								<p class="paadingRight10">寒冷天气</p>
+								<img src="img/wish/line.png" >
+							</li>
+							<li data-name = "carJourney">
+								<p class="paadingRight10">旅程</p>
+								<img src="img/wish/line.png" >
+							</li>
+							<li data-name = "carShow">
+								<p class="paadingRight10">显示</p>
+								<img src="img/wish/line.png" >
+							</li>
+							<li data-name="carPower">
+								<p class="paadingRight10">驻车和电源</p>
+							</li>
+						</ul>
+					</div>
+					<!-- 车门盒子 -->
+					<div class="box carBox carDoor">
+						<img class="left_dotted" src="img/wish/left_dotted.png" >
+						<img class="right_dotted" src="img/wish/right_dotted.png" >
+						<img class="carShadow" src="img/wish/carShadow.png" >
+						<div class="car1"></div>  
+						<div class="car2"></div>
+						<div class="car3"></div>
+						<img class="allClose" onclick="allClose()" src="img/wish/allClose.png" >
+						<img class="forward_box" src="img/wish/forward_box.png" >
+						<img class="trunk" src="img/wish/trunk.png" >
+						<img id="carDoorLeft"  onclick="clickLeftOpen()" class="carDoorLeft" src="img/wish/left_door.png" >
+						<img id="carDoorLeft2"  onclick="clickLeftClose()" class="carDoorLeft2" src="img/wish/driver.png" >
+						<span class="driver">驾驶员</span>
+						<span class="copilot">乘客</span>
+						<img id="" onclick="clickRightOpen()" class="carDoorRight" src="img/wish/right_door.png" >
+						<img id="" onclick="clickRightClose()" class="carDoorRight2" src="img/wish/copilot.png" >
+					</div>
+					<!-- 座椅盒子 -->
+					<div class="box chairBox carChair">
+						<img class="chairBoxIcon01" src="img/wish/chairBox/icon01.png" alt="">
+						<img class="chairBoxIcon02" src="img/wish/chairBox/icon01.png" alt="">
+						<img class="chairBoxIcon03" src="img/wish/chairBox/icon01.png" alt="">
+
+						<img class="chairBoxIcon04" src="img/wish/chairBox/icon01.png" alt="">
+						<img class="chairBoxIcon05" src="img/wish/chairBox/icon01.png" alt="">
+						<img class="chairBoxIcon06" src="img/wish/chairBox/icon01.png" alt="">
+					</div>
+					<!-- 悬架 -->
+					<div class="box suspensionBox carSuspension">
+						<div class="suspensionBox1">
+							<div class="suspensionBox1Left">
+								<p>车身高度</p>
+								<ul class="suspensionBox1Ul">
+									<li class="suspensionBox1UlLi suspensionBox1UlAstive">很高</li>
+									<li class="suspensionBox1UlLi">高</li>
+									<li class="suspensionBox1UlLi">标准</li>
+									<li class="suspensionBox1UlLi">低</li>
+									<li class="suspensionBox1UlLi">很低</li>
+								</ul>
+								<ul class="suspensionBox1Ul suspensionBox1Ul2">
+									<li class="">千金顶</li>
+								</ul>
+							</div>
+							<div class="suspensionBox1Right">
+								<span>踩下制动踏板以启用</span>
+							</div>
+						</div>
+						<div class="suspensionBox2">
+							<p>自动降低悬架</p>
+							<ul class="suspensionBox1Ul2">
+								<li>调整速度</li>
+							</ul>
+							<span>设置 总是</span>
+						</div>
+					</div>
+					<!-- 驾驶 -->
+					<div class="box driveBox carDrive">
+						<div class="driveBox1">
+							<div class="driveBox1Left">
+								<p>加速模式</p>
+								<ul class="driveBox1Ul driveBox1UlClick">
+									<li>轻松</li>
+									<li>运动</li>
+									<li class="driveBoxActive">狂暴</li>
+								</ul>
+								<span class="">最大电池功率</span>
+								<p>转向模式</p>
+								<ul class="driveBox1Ul driveBox1UlClick">
+									<li class="driveBoxActive">舒适</li>
+									<li>标准</li>
+									<li>运动</li>
+								</ul>
+							</div>
+							<div class="driveBox1Right">
+								<p>牵引力控制</p>
+								<ul class="driveBox1UlRight">
+									<li>湿滑路面辅助</li>
+								</ul>
+								<span>用于帮助车辆脱困于雪地，沙地或泥地</span>
+								<p>缓行</p>
+								<ul class="driveBox1UlRight2 driveBox1UlClick">
+									<li class="driveBoxActive">关</li>
+									<li>开</li>
+								</ul>
+								<span>释放制动踏板后车辆缓慢移动</span>
+							</div>
+						</div>
+						<div class="driveBox2">
+							<div class="driveBox2Left">
+								<p>能量回收制动</p>
+								<ul class="driveBox1UlRight2 driveBox1UlClick">
+									<li>标准</li>
+									<li class="driveBoxActive">低</li>
+								</ul>
+								<span class="">“标准”增加里程并延长制动器寿命</span>
+							</div>
+							<div class="driveBox2Right">
+								<p>长途模式</p>
+								<ul class="driveBox1UlRight2 driveBox1UlClick">
+									<li class="driveBoxActive">关</li>
+									<li>开</li>
+								</ul>
+							</div>
+						</div>
+						<div class="driveBox3">
+							<div class="driveBox3Left">
+									<p>拖车模式</p>
+									<ul class="driveBox1UlRight2 driveBox1UlClick">
+										<li>关</li>
+										<li class="driveBoxActive">开</li>
+									</ul>
+							</div>
+						</div>
+					</div>
+					<!-- 寒冷天气 -->
+					<div class="box weatherBox carWeather">
+						<span>全部关闭</span>
+					</div>
+					<!-- 旅程 -->
+					<div class="box journeyBox carJourney">
+						<table>
+							<tr>
+								<td class="tableTd01">在仪表板中显示</td>
+								<td class="tableTd02">距离</td>
+								<td class="tableTd02">持续时间</td>
+								<!-- <td>平均耗能</td> -->
+							</tr>
+							<tr>
+								<td class="tableTd01">
+									<input type="checkbox" name="" id="" checked="checked">
+									当前行程
+								</td>
+								<td class="tableTd02"><span class="numNow">2.6</span> km</td>
+								<td class="tableTd02 numNow"><span class="numNow">9</span> 分钟</td>
+								<!-- <td>582 Wh/km</td> -->
+							</tr>
+							<tr>
+								<td class="tableTd01">在仪表板中显示</td>
+								<td class="tableTd02">距离</td>
+								<td class="tableTd02">总耗能</td>
+								<!-- <td>平均耗能</td> -->
+							</tr>
+							<tr>
+								<td class="tableTd01">
+									<input type="checkbox" name="" id="" checked="checked">
+									自上次充电后
+								</td>
+								<td class="tableTd02">117.7 km</td>
+								<td class="tableTd02">32.2 kWh</td>
+								<!-- <td>273 Wh/km</td> -->
+							</tr>
+							<tr>
+								<td class="tableTd01">行程A</td>
+								<td class="tableTd02"> <span class="numA">1,147.7</span> km</td>
+								<td class="tableTd02"> <span class="numA">3,244.2</span> kWh</td>
+								<!-- <td>273 Wh/km</td> -->
+							</tr>
+							<tr>
+								<td class="tableTd01">行程B</td>
+								<td class="tableTd02"><span class="numB">111,111.7</span> km</td>
+								<td class="tableTd02"><span class="numB">66,632.2 </span> kWh</td>
+								<!-- <td>273 Wh/km</td> -->
+							</tr>
+							<tr>
+								<td class="tableTd01">里程表</td>
+								<td class="tableTd02">22,264.1 km</td>
+							</tr>
+						</table>
+						<ul class="journeyBoxUl">
+							<li>
+								<span>重置</span>
+								<span>当前行程</span>
+							</li>
+							<li>
+								<span>重置</span>
+								<span>行程A</span>
+							</li>
+							<li>
+								<span>重置</span>
+								<span>行程B</span>
+							</li>
+						</ul>
+					</div>
+					<!-- 显示 -->
+					<div class="box showBox carShow">
+						<p>亮度和模式</p>
+						<div class="showBox1">
+							<p>
+								<span class="autoLight">自动亮度</span>
+								<span class="autoAdjust">自动调节 <input type="checkbox" checked="checked"></span>
+							</p>
+							<div class="mui-input-row mui-input-range">
+								<input type="range" min="0" max="100" value="100">
+							</div>
+							<p>显示模式</p>
+							<ul class="showBox1Ul driveBox1UlClick">
+								<li>日间</li>
+								<li>夜间</li>
+								<li class="driveBoxActive">自动</li>
+							</ul>
+							<ul class="showBox1Ul2">
+								<li>清洁模式</li>
+							</ul>
+						</div>
+						<p>能量管理</p>
+						<div class="showBox2">
+							<p>节能</p>
+							<ul class="showBox2Ul floatLeft driveBox1UlClick">
+								<li class="driveBoxActive">关</li>
+								<li>开</li>
+							</ul>
+							<div class="floatLeft"><input type="checkbox" checked="checked"> 始终连接</div>
+						</div>
+					</div>
+					<!-- 电源 -->
+					<div class="box powerBox carPower">
+						<div class="powerBox1">
+							<div class="powerBox1Left floatLeft">
+								<img src="img/wish/powerBox/tingche.jpg" alt="">
+								<p>脚必须放在制动踏板上</p>
+							</div>
+							<div class="powerBox1Right floatRight">
+								<img src="img/wish/powerBox/fangxiangpan.jpg" alt="">
+							</div>
+						</div>
+						<div class="powerBox2">
+							<p>车辆电源</p>
+							<p class="powerBox2Btn">关闭电源</p>
+							<p>紧急情况下关闭车辆所有电源。</p>
+
+						</div>
+					</div>
+				</div>
+				<!-- 第三块内容 -->
+				<div class="threePieces">
+					<div class="deng01" onclick="deng('deng01')">
+						<img class="" src="img/wish/deng01.png" >
+					</div>
+					<div class="deng02" onclick="deng('deng02')">
+						<img  src="img/wish/deng02.png" >
+					</div>
+					<div class="deng03" onclick="deng('deng03')">
+						<span>阅读灯</span>
+					</div>
+					<div class="deng04 dengActive" onclick="deng('deng04')" >
+						<span>氛围灯</span>
+					</div>
+					<div class="deng05" onclick="deng('deng05')">
+						<span><img src="img/wish/deng03.png" >&nbsp;&nbsp;后</span>
+					</div>
+					<div class="deng06" onclick="deng('deng06')">
+						<span><img src="img/wish/deng04.png" >&nbsp;&nbsp;前</span>
+					</div>
+					<div class="deng07" onclick="deng('deng07')">
+						<span>自动远光灯</span>
+					</div>
+					
+					<ul class="deng08">
+						<li class="deng08Li">
+							<span class="deng08_01 mui-btn">关</span>
+						</li>
+						<li class="deng08Li">
+							<span class="deng08_02 mui-btn"><img src="img/wish/deng06.png" ></span>
+						</li>
+						<li class="deng08Li">
+							<span class="deng08_03 mui-btn"><img src="img/wish/deng05.png" ></span>
+						</li>
+						<li class="deng08Li">
+							<span class="deng08_04 dengActive2 mui-btn">自动</span>
+						</li>
+					</ul>
+					
+					<div class="car4">
+						<img src="img/wish/car2.png" >
+					</div>
+				</div>
 			</div>
+			<!-- 底部 -->
+			
+			<div class="footerSeeting">
+				<ul class="footerSeetingUl">
+					<li class="li1">
+						<div class="">
+							<img class="icon01" src="img/wish/footer/icon01.png" >
+							<p>控制</p>
+						</div>
+					</li>
+					<li class="li2">
+						<div>
+							<img class="icon02" src="img/wish/footer/icon02.png" >
+							<img class="icon03" src="img/wish/footer/icon03.png" >
+							<span class="leftSeatTemperature">13</span>
+							<img class="icon04" src="img/wish/footer/icon04.png" >
+						</div>
+					</li>
+					<li class="li3">
+						<div>
+							<img class="icon05 leftTemperature" src="img/wish/footer/icon05.png" onclick="temperature('leftAirconditionTemperature','add')">
+							<span class="leftAirconditionTemperature">21.0</span>
+							<img class="icon06" src="img/wish/footer/icon06.png" onclick="temperature('leftAirconditionTemperature','reduce')">
+						</div>
+						
+					</li>
+					<li class="li4">
+						<img class="icon07" src="img/wish/footer/icon07.png" >
+					</li>
+					<li class="li5">
+						<span>前</span>
+						<img class="icon15" src="img/wish/footer/icon15.png" >
+						<span>后</span>
+						<img class="icon08" src="img/wish/footer/icon08.png" >
+						<span>温度控制</span>
+					</li>
+					<li class="li6">
+						<img  class="icon09" src="img/wish/footer/icon09.png" >
+					</li>
+					<li class="li7">
+						<div>
+							<img class="icon05" src="img/wish/footer/icon05.png" onclick="temperature('rightAirconditionTemperature','add')">
+							<span class="rightAirconditionTemperature">21.0</span>
+							<img class="icon06" src="img/wish/footer/icon06.png" onclick="temperature('rightAirconditionTemperature','reduce')">
+						</div>
+						
+					</li>
+					<li class="li8">
+						<div>
+							
+						</div>
+						<img class="icon11" src="img/wish/footer/icon11.png" >
+						<span class="rightSeatTemperature">13</span>
+						<img class="icon10" src="img/wish/footer/icon10.png" >
+						<img class="icon04" src="img/wish/footer/icon04.png" >
+					</li>
+					<li class="li9">
+						<div>
+							<img class="icon13" src="img/wish/footer/icon13.png" >
+							<img class="icon12" src="img/wish/footer/icon12.png" >
+							<img class="icon14" src="img/wish/footer/icon14.png" >
+						</div>
+					</li>
+				</ul>
+			</div>
+			
 		</div>
 		<!--主体-->
 		<script type="text/javascript"> 
 // 			
-// 			mui.plusReady(function(){
-// 				
-// 			});
+			// mui.plusReady(function(){
+			// 	plus.screen.lockOrientation("portrait-primary"); 				
+			// });
 
 // 			//实现图片的预加载
-// 			function preloadImg(srcArr){
-// 				if(srcArr instanceof Array){
-// 					for(var i=0; i<srcArr.length; i++){
-// 						var oImg = new Image();
-// 						oImg.src = srcArr[i];
-// 					}
-// 				}
-// 			}
-// 			var arr = [];
-// 			var arr2 = [];
-// 			for(var j = 0; j<60;j++){
-// 				if(j<10){
-// 					j = "0"+j;
-// 				}else{
-// 					j = j
-// 				}
-// 				arr.push("img/wish/left/leftwingdoor00"+j+".png");
-// 				arr2.push("img/wish/right/rightwingdoor00"+j+".png")
-// 				// console.log(arr)
-// 			}
-// 			//预加载图片
-// 			preloadImg(arr);
-// 			preloadImg(arr2);
-			
 			var imgar = [];
 			var imgar2 = [];
 		    function eightimg(){
 			    for(o=0;o<60;o++){
+					if(o<10){
+						o = "0"+o;
+					}else{
+						o=o;
+					}
 			    	imgar[o] = new Image();
 					imgar2[o] = new Image();
 			        imgar[o].src = "img/wish/left/leftwingdoor00"+o+".png"; 
@@ -78,15 +440,23 @@
 			        imgar[o].onload=function(){
 				        this.width = 1280;
 				        this.height =720;
-			       };
+			        };
 					imgar2[o].onload=function(){
 				        this.width = 1280;
 				        this.height =720;
-			       } 
+			        } 
 			     }
 		    }
 			eightimg(); 
 			
+			// 切换车门座椅tab...
+			$('.carTitleUl').off('click');
+			$('.carTitleUl').on("click","li",function(){				
+				$(this).addClass('navActive').siblings().removeClass('navActive');
+				var name = $(this).attr("data-name");
+				$('.'+name).fadeIn().siblings(".box").fadeOut(0);
+			});
+			// 门
 			// 左门动画
 			var tl1 = new TimelineMax({});
 			var t = 0.02;
@@ -102,9 +472,48 @@
 			
 			function clickLeftOpen(){
 				tl1.play();
+				// ajax 打开左门
+				// var params = {};
+				// params.state = "true";
+				// params.type = "CtrlLeftFountDoor";
+				// params.action = "mControl";
+				// $.ajax({
+				// 	headers: {
+				// 		"Content-Type": "application/json; charset=utf-8"
+				// 	},
+				// 	type: 'post',
+				// 	url: 'http://172.16.1.198/socket',
+				// 	dataType: 'json',
+				// 	data: JSON.stringify(params),
+				// 	success: function(data) { 
+				// 		console.log(data);
+				// 	},
+				// 	error: function(data) {
+				// 		console.log(data)
+				// 	}
+				// });
 			}
 			function clickLeftClose(){
 				tl1.reverse();
+				// var params = {};
+				// params.state = "false";
+				// params.type = "CtrlLeftFountDoor";
+				// params.action = "mControl";
+				// $.ajax({
+				// 	headers: {
+				// 		"Content-Type": "application/json; charset=utf-8"
+				// 	},
+				// 	type: 'post',
+				// 	url: 'http://172.16.1.198/socket',
+				// 	dataType: 'json',
+				// 	data: JSON.stringify(params),
+				// 	success: function(data) { 
+				// 		console.log(data);
+				// 	},
+				// 	error: function(data) {
+				// 		console.log(data)
+				// 	}
+				// });
 			}
 			// 左门动画
 			 
@@ -122,12 +531,196 @@
 			tl2.stop();
 			
 			function clickRightOpen(){
-				tl2.play();
+				tl2.play();	
+				// var params = {};
+				// params.state = "true";
+				// params.type = "CtrlRightFountDoor";
+				// params.action = "mControl";
+				// $.ajax({
+				// 	headers: {
+				// 		"Content-Type": "application/json; charset=utf-8"
+				// 	},
+				// 	type: 'post',
+				// 	url: 'http://172.16.1.198/socket',
+				// 	dataType: 'json',
+				// 	data: JSON.stringify(params),
+				// 	success: function(data) { 
+				// 		console.log(data);
+				// 	},
+				// 	error: function(data) {
+				// 		console.log(data)
+				// 	}
+				// });
 			}
 			function clickRightClose(){
 				tl2.reverse();
+				// var params = {};
+				// params.state = "true";
+				// params.type = "CtrlRightFountDoor";
+				// params.action = "mControl";
+				// $.ajax({
+				// 	headers: {
+				// 		"Content-Type": "application/json; charset=utf-8"
+				// 	},
+				// 	type: 'post',
+				// 	url: 'http://172.16.1.198/socket',
+				// 	dataType: 'json',
+				// 	data: JSON.stringify(params),
+				// 	success: function(data) { 
+				// 		console.log(data);
+				// 	},
+				// 	error: function(data) {
+				// 		console.log(data)
+				// 	}
+				// });
 			}
 			// 右门动画
+			
+			// 全部关闭
+			function allClose(){
+				tl1.reverse();
+				tl2.reverse();
+			}
+			
+			// 第三块区域
+			// 灯的封装方法
+			function deng(className){
+				
+				var deng01 = document.getElementsByClassName(className);
+				if(deng01[0].className.indexOf('dengActive') == -1){
+					deng01[0].classList.add("dengActive");
+				}else{
+					deng01[0].classList.remove( "dengActive");
+				}
+
+				// if(className == "deng06"){
+				// 	var params = {};
+				// 	params.state = "true";
+				// 	params.type = "CtrlLeftLight";
+				// 	params.action = "mControl";
+				// 	$.ajax({
+				// 		headers: {
+				// 			"Content-Type": "application/json; charset=utf-8"
+				// 		},
+				// 		type: 'post',
+				// 		url: 'http://172.16.1.198/socket',
+				// 		dataType: 'json',
+				// 		data: JSON.stringify(params),
+				// 		success: function(data) { 
+				// 			console.log(data);
+				// 		},
+				// 		error: function(data) {
+				// 			console.log(data)
+				// 		}
+				// 	});
+				// }
+				
+				// if(className == "deng05"){
+				// 	var params = {};
+				// 	params.state = "true";
+				// 	params.type = "CtrlBehindLight";
+				// 	params.action = "mControl";
+				// 	$.ajax({
+				// 		headers: {
+				// 			"Content-Type": "application/json; charset=utf-8"
+				// 		},
+				// 		type: 'post',
+				// 		url: 'http://172.16.1.198/socket',
+				// 		dataType: 'json',
+				// 		data: JSON.stringify(params),
+				// 		success: function(data) { 
+				// 			console.log(data);
+				// 		},
+				// 		error: function(data) {
+				// 			console.log(data)
+				// 		}
+				// 	});
+				// }
+		
+			}
+			// 灯08切换的方法
+			$('.deng08').off("click");
+			$('.deng08').on("click","li",function(){	
+				$(this).children().addClass('dengActive2').parent().siblings().children().removeClass('dengActive2');
+			});
+			// 灯08切换js方法
+			// var deng08 = document.getElementsByClassName("deng08Li");
+			// for(var a=0;a<deng08.length;a++){
+			// 	var deng8 = deng08[a];
+			// 	deng8.index = a;
+			// 	deng8.onclick = function () {
+			// 		for(var b= 0;b<deng08.length;b++){
+			// 			deng08[b].children[0].classList.remove("dengActive2");
+			// 		}				
+			// 		deng08[this.index].children[0].classList.add("dengActive2");
+			// 	}	
+			// }
+
+
+	
+			
+			
+			// 第四块区域
+			// 增加温度, 降低温度封装方法
+			function temperature(className,state){
+				console.log(state)
+				var temp = document.getElementsByClassName(className);
+				var num = parseFloat(temp[0].innerHTML);
+				if(state == "add"){
+					num++;
+				}else{
+					num--;
+				}
+				num = num+".0" ;
+				temp[0].innerText = num;
+			}
+			
+			// 悬架jq
+			$('.suspensionBox1Ul').off('click');
+			$('.suspensionBox1Ul').on("click","li",function(){
+				$(this).addClass("suspensionBox1UlAstive").siblings().removeClass("suspensionBox1UlAstive");
+			});
+			$('.suspensionBox1Ul2,.driveBox1UlRight,.showBox1Ul2').off('click');
+			$('.suspensionBox1Ul2,.driveBox1UlRight,.showBox1Ul2').on("click","li",function(){
+				if(	$(this).hasClass('suspensionBox1UlAstive')){
+					$(this).removeClass("suspensionBox1UlAstive");
+				}else{
+					$(this).addClass("suspensionBox1UlAstive");
+				}
+			});
+			// 悬架js
+			// var suspension = document.getElementsByClassName("suspensionBox1UlLi");
+			// for(var a=0;a<suspension.length;a++){
+			// 	var suspensions = suspension[a];
+			// 	suspensions.index = a;
+			// 	suspensions.onclick = function () {
+			// 		for(var b= 0;b<suspension.length;b++){
+			// 			suspension[b].classList.remove("suspensionBox1UlAstive");
+			// 		}				
+			// 		suspension[this.index].classList.add("suspensionBox1UlAstive");
+			// 	}	
+			// }
+			
+			// 驾驶
+			$('.driveBox1UlClick').off('click');
+			$('.driveBox1UlClick').on("click","li",function(){
+				$(this).addClass("driveBoxActive").siblings().removeClass("driveBoxActive");
+			});
+			
+			// 旅程重置
+			$('.journeyBoxUl').off('click');
+			$(".journeyBoxUl").on("click","li",function(){
+				if($(this).index() ==0){
+					$(".numNow").html("0");
+				}
+				if($(this).index() ==1){
+					$(".numA").html("0");
+				}
+				if($(this).index() ==2){
+					$(".numB").html("0");
+				}
+			});
+	
 		</script>
 	</body>
 

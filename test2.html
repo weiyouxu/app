@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body{padding: 0;margin: 20px auto;text-align: center;}
+        #canvas{border: 1px solid #000}
+    </style>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+    <script>
+        var window_width = 1024;
+        var window_heihgt = 768;
+        var radius = 8;
+        var margin_top = 60;
+        var margin_left = 30;
+        var endTime = new Date(2018,11,25,18,48,52);
+        var curShowTimeSecond = 0;
+        var ball = {x:200,y:100,r:20,g:2,vx:-4,vy:0,color:"#005588"};
+        var balls = [];
+        var colors = ["#33B5E5","#0099CC","#AA66CC","#9933CC","#99CC00","#669900","#FFBB33","#FF8800","#FF4444","#CC0000"];
+
+
+        window.onload = function (){
+
+            var digit = [
+                [
+                    [0,0,1,1,1,0,0],
+                    [0,1,1,0,1,1,0],
+                    [1,1,0,0,0,1,1],
+                    [1,1,0,0,0,1,1],
+                    [1,1,0,0,0,1,1],
+                    [1,1,0,0,0,1,1],
+                    [1,1,0,0,0,1,1],
+                    [1,1,0,0,0,1,1],
+                    [0,1,1,0,1,1,0],
+                    [0,0,1,1,1,0,0]
+                ],//0
+                [
+                    [0,0,0,1,1,0,0],
+                    [0,1,1,1,1,0,0],
+                    [0,0,0,1,1,0,0],
+                    [0,0,0,1,1,0,0],
+                    [0,0,0,1,1,0,0],
+                    [0,0,0,1,1,0,0],
+                    [0,0,0,1,1,0,0],
+                    [0,0,0,1,1,0,0],
+                    [0,0,0,1,1,0,0],
+                    [1,1,1,1,1,1,1]
+                ],//1
+                [
+                    [0,1,1,1,1,1,0],
+                    [1,1,0,0,0,1,1],
+                    [0,0,0,0,0,1,1],
+                    [0,0,0,0,1,1,0],
+                    [0,0,0,1,1,0,0],
+                    [0,0,1,1,0,0,0],
+                    [0,1,1,0,0,0,0],
+                    [1,1,0,0,0,0,0],
+                    [1,1,0,0,0,1,1],
+                    [1,1,1,1,1,1,1]
+                ],//2
+                [
+                    [0,1,1,1,1,1,0],
+                    [1,1,0,0,0,1,1],
+                    [0,0,0,0,0,1,1],
+                    [0,0,0,0,0,1,1],
+                    [0,1,1,1,1,1,0],
+                    [0,1,1,1,1,1,0],
+                    [0,0,0,0,0,1,1],
+                    [0,0,0,0,0,1,1],
+                    [1,1,0,0,0,1,1],
+                    [0,1,1,1,1,1,0]
+                ],//3
+                [
+                    [0,0,0,0,1,1,0],
+                    [0,0,0,1,1,1,0],
+                    [0,0,1,1,1,1,0],
+                    [0,1,1,0,1,1,0],
+                    [1,1,0,0,1,1,0],
+                    [1,1,1,1,1,1,1],
+                    [0,0,0,0,1,1,0],
+                    [0,0,0,0,1,1,0],
+                    [0,0,0,0,1,1,0],
+                    [0,0,0,0,1,1,0]
+                ],//4
+                [
+                    [1,1,1,1,1,1,1],
+                    [1,1,0,0,0,0,0],
+                    [1,1,0,0,0,0,0],
+                    [1,1,0,0,0,0,0],
+                    [1,1,1,1,1,1,1],
+                    [0,0,0,0,0,1,1],
+                    [0,0,0,0,0,1,1],
+                    [0,0,0,0,0,1,1],
+                    [1,1,0,0,0,1,1],
+                    [0,1,1,1,1,1,0]
+                ],//5
+                [
+                    [0,0,0,0,1,1,0],
+                    [0,0,1,1,0,0,0],
+                    [0,1,1,0,0,0,0],
+                    [1,1,0,0,0,0,0],
+                    [1,1,0,1,1,1,0],
+                    [1,1,0,0,0,1,1],
+                    [1,1,0,0,0,1,1],
+                    [1,1,0,0,0,1,1],
+                    [1,1,0,0,0,1,1],
+                    [0,1,1,1,1,0,0]
+                ],//6
+                [
+                    [1,1,1,1,1,1,1],
+                    [1,1,0,0,0,1,1],
+                    [0,0,0,0,1,1,0],
+                    [0,0,0,0,1,1,0],
+                    [0,0,0,1,1,0,0],
+                    [0,0,0,1,1,0,0],
+                    [0,0,1,1,0,0,0],
+                    [0,0,1,1,0,0,0],
+                    [0,0,1,1,0,0,0],
+                    [0,0,1,1,0,0,0]
+                ],//7
+                [
+                    [0,1,1,1,1,1,0],
+                    [1,1,0,0,0,1,1],
+                    [1,1,0,0,0,1,1],
+                    [1,1,0,0,0,1,1],
+                    [0,1,1,1,1,1,0],
+                    [0,1,1,1,1,1,0],
+                    [1,1,0,0,0,1,1],
+                    [1,1,0,0,0,1,1],
+                    [1,1,0,0,0,1,1],
+                    [0,1,1,1,1,1,0]
+                ],//8
+                [
+                    [0,1,1,1,1,1,0],
+                    [1,1,0,0,0,1,1],
+                    [1,1,0,0,0,1,1],
+                    [1,1,0,0,0,1,1],
+                    [0,1,1,1,0,1,1],
+                    [0,0,0,0,0,1,1],
+                    [0,0,0,0,0,1,1],
+                    [0,0,0,0,1,1,0],
+                    [0,0,0,1,1,0,0],
+                    [0,1,1,0,0,0,0]
+                ],//9
+                [
+                    [0,0,0,0],
+                    [0,0,0,0],
+                    [0,1,1,0],
+                    [0,1,1,0],
+                    [0,0,0,0],
+                    [0,0,0,0],
+                    [0,1,1,0],
+                    [0,1,1,0],
+                    [0,0,0,0],
+                    [0,0,0,0]
+                ]//冒号
+            ];
+
+            // 获取canvas
+            var canvas = document.getElementById("canvas");
+            
+            //设定canvas 宽高
+            canvas.width = window_width;
+            canvas.height = window_heihgt;
+            //判断浏览器是否兼容
+            if( canvas.getContext("2d")){
+                var context = canvas.getContext("2d");
+            }else{
+                console.log("你的浏览器不支持canvas，请更换浏览器！")
+            }
+            curShowTimeSecond = getCurShowTimeSecond();
+            setInterval(function(){
+                render(context);
+                update();
+            },50);
+            // 倒计时
+            function getCurShowTimeSecond(){
+                var curTime = new Date();
+                var ret = endTime.getTime() - curTime.getTime();
+                ret = Math.round(ret/1000);
+                return ret >=0 ?ret:0;
+            }
+            function update(){
+                var nextShowTimeSecond = getCurShowTimeSecond();
+                var nextHours = parseInt(nextShowTimeSecond / 3600);
+                var nextMinutes = parseInt((nextShowTimeSecond - nextMinutes *3600)/60);
+                var nextSeconds = nextShowTimeSecond % 60;
+
+                var curHours = parseInt(curShowTimeSecond / 3600);
+                var curMinutes = parseInt((curShowTimeSecond - curHours *3600)/60);
+                var curSeconds = curShowTimeSecond % 60;
+
+                if(nextSeconds != curSeconds){
+            
+                    if(parseInt(curHours/10) != parseInt(nextHours/10)){
+                        addBalls(margin_left+0,margin_top,parseInt(curHours/10))
+                    }
+                    if(parseInt(curHours%10) != parseInt(nextHours%10)){
+                        addBalls(margin_left+15*(radius+1),margin_top,parseInt(curHours/10))
+                    }
+                    if(parseInt(curMinutes/10) != parseInt(nextMinutes/10)){
+                        addBalls(margin_left+39*(radius+1),margin_top,parseInt(curMinutes/10))
+                    }
+                    if(parseInt(curMinutes%10) != parseInt(nextMinutes%10)){
+                        addBalls(margin_left+54*(radius+1),margin_top,parseInt(curHours/10))
+                    }
+                    if(parseInt(curSeconds/10) != parseInt(nextSeconds/10)){
+                        addBalls(margin_left+78*(radius+1),margin_top,parseInt(curSeconds/10))
+                    }
+                    if(parseInt(curSeconds%10) != parseInt(nextSeconds%10)){
+                        addBalls(margin_left+93*(radius+1),margin_top,parseInt(curSeconds/10))
+                    }
+                    curShowTimeSecond = nextShowTimeSecond;
+                }
+
+                updateBalls();
+            }
+            function updateBalls(){
+                for(var i = 0; i<balls.length;i++){
+                    balls[i].x += balls[i].vx;
+                    balls[i].y += balls[i].vy;
+                    balls[i].vy += balls[i].g;
+                    
+                    if(balls[i].y >= window_heihgt - radius){
+                        balls[i].y = window_heihgt - radius;
+                        balls[i].vy = -balls[i].vy*0.66;
+                    }
+                }
+            };
+            function addBalls(x,y,num){
+                for(var i = 0 ; i <digit[num].length;i++){
+                    for(var j=0;j<digit[num][i].length;j++){
+                        if(digit[num][i][j] == 1){
+                            var aBall = {
+                                x:x+j*2*(radius+1)+(radius+1),
+                                y:y+i*2*(radius+1)+(radius+1),
+                                g:1.5+Math.random(),
+                                vx:Math.pow(-1,Math.ceil(Math.random()*1000))*4,
+                                vy: -5,
+                                color:colors[Math.floor(Math.random()*colors.length)]
+                            }
+                            // cxt.arc(x+j*2*(radius+1)+(radius+1),y+i*2*(radius+1)+(radius+1),radius,0,2*Math.PI);
+                            // cxt.closePath();
+                            balls.push(aBall);
+                        }
+                       
+                    }
+                }
+            }
+            function render(cxt){
+
+                cxt.clearRect(0,0,window_width,window_heihgt);
+
+                var hours = parseInt(curShowTimeSecond / 3600);
+                var minutes = parseInt((curShowTimeSecond - hours *3600)/60);
+                var seconds = curShowTimeSecond % 60;
+
+                renderDigit(margin_left,margin_top,parseInt(hours/10),cxt);
+                renderDigit(margin_left+15*(radius+1),margin_top,parseInt(hours/10),cxt);
+                renderDigit(margin_left+30*(radius+1),margin_top,10,cxt);
+                renderDigit(margin_left+39*(radius+1),margin_top,parseInt(minutes/10),cxt);
+                renderDigit(margin_left+54*(radius+1),margin_top,parseInt(minutes%10),cxt);
+                renderDigit(margin_left+69*(radius+1),margin_top,10,cxt);
+                renderDigit(margin_left+78*(radius+1),margin_top,parseInt(seconds/10),cxt);
+                renderDigit(margin_left+93*(radius+1),margin_top,parseInt(seconds%10),cxt);
+                
+                for(var i =0;i<balls.length;i++){
+                    cxt.fillStyle = balls[i].color;
+                    cxt.beginPath();
+                    cxt.arc(balls[i].x,balls[i].y,radius,0,2*Math.PI);
+                    cxt.closePath();
+                    cxt.fill();
+                }
+            }
+            function renderDigit(x,y,num,cxt){
+                cxt.fillStyle = "blue";
+                for(var i = 0 ; i <digit[num].length;i++){
+                    for(var j=0;j<digit[num][i].length;j++){
+                        if(digit[num][i][j] == 1){
+                            cxt.beginPath();
+                            
+                            cxt.arc(x+j*2*(radius+1)+(radius+1),y+i*2*(radius+1)+(radius+1),radius,0,2*Math.PI);
+                            cxt.closePath();
+                            cxt.fill();
+                        }
+                    }
+                }
+            }
+
+
+            // 画直线
+            /*
+            context.beginPath();//一个图形绘制开始
+            context.moveTo(100,100);//起点 100 ，100 位置
+            context.lineTo(500,500);//终点 500,500 位置 
+            context.lineTo(100,500);
+            context.lineTo(100,100);
+            context.lineWidth = 5;// 线的宽度
+            context.strokeStyle = "#dadada";//线的颜色
+            context.stroke();//生成 上面 100,100 到 500,500的线 ，stroke 方法 是绘制线条， moveTo，lineTo 状态生成
+
+            context.fillStyle = "rgba(125,34,140,0.5)"; // 给绘制的图形 填充 颜色数值
+            context.fill(); // 给绘制的图形 填充颜色 ，用fill的时候 会自动添加一条闭合线
+            context.closePath();//一个图形绘制结束 和 beginPath 不一定要成对出现，当成对出现的时候如果没有闭合线 canvas会自动添加一条闭合收尾的线，如果在一个for循环里面只有beginPath ，canvas就不会去添加一条闭合线
+
+            //如果要2个图片一定要用  beginPath 和 closePath 包裹起来
+            context.beginPath();
+            context.moveTo(400,400);
+            context.lineTo(400,100);
+            context.strokeStyle = "red";
+            context.stroke();
+            context.closePath();
+
+            // 绘制 弧线 和 园 
+            // context.arc(
+            //     contextX,contextY,startingAngle,endingAngle,anticlockwise
+            //     //圆心的 x，圆心的 y，哪个弧度为开始，哪个弧度为结束，顺时针 false或者逆时针 true
+            // )
+            context.beginPath();
+            context.arc(300,300,200,0,2*Math.PI,false);// 里面的2*Math.PI 是指 园画多少 一个园分为 4个PI 一个PI为0.5
+            context.stroke();
+            context.closePath();
+            */
+
+
+            
+
+        }
+   
+    </script>
+</body>
+</html>

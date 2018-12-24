@@ -1,12 +1,209 @@
-body,html{background-color: #fff;}
-.mui-content{background-color: #fff;}
-.carBox{width: 100%;height:300px; #fff;text-align: center;position: relative;overflow: hidden;}
-.carDoorLeft{width: 10%;position: absolute;top: 180px;left: 20px;z-index: 2;}
-.carDoorLeft2{width: 10%;position: absolute;top: 250px;left: 20px;z-index: 2;}
-.carDoorRight{width: 10%;position: absolute;top: 180px;right: 20px;z-index: 2;}
-.carDoorRight2{width: 10%;position: absolute;top: 250px;right: 20px;z-index: 2;}
+body,html{background-color: #1e1e1e;font-size:625%; }
+ul,li{list-style: none;margin: 0;padding: 0;}
+.mui-content{background-color: #1e1e1e;} 
+.main{width: 100%;background: #fff;height: 100%;margin: 0% auto 0%;}
+.floatLeft{float: left;}
+.floatRight{float: right;}
+/* 头部 */
+.nav{width: 100%;background: #f8f8f8;border-bottom: 1px solid #dadada;height: 80px;font-size: 14px;line-height: 80px;color: #9e9e9e;border-radius: 10px 10px 0 0;}
+.navClose{width: 3%;margin: 0 20% 0 5%;}
+.navCloseImg{width: 3%;}
+.control{margin: 0 3% 0 3%;}
+.setting{margin: 0 3% 0 3%;}
+.electricity{display:inline-block;width: 30%;background: url("../img/wish/electricityBox.png") no-repeat;background-size: contain;text-align: center;margin-left: 5%;background-position: center;}
+.electricity img {vertical-align: middle;padding:0 10px 0 0;}
+.navActive{color: #000;}
+.navActive p{color: #000;}
+/* 第二块区域 */
+.secondPieces{width: 100%;background: #fff;color: #9e9e9e;overflow: hidden;margin: 5% 0;}
+.carTitle{width: 20%;float: left;font-size: 12px;}
+.carTitleUl{text-align: right;width: 100%;padding: 0;}
+.carTitleUl li{width: 100%;line-height: 22px;}
+.carTitleUl img {width: 80%;padding-bottom: 5px;}
+.carTitleUl p{font-size: 12px;margin: 0;}
+.paadingRight10{padding-right: 10px;}
+
+/* 车门 */
+.carBox{width: 77%;height:350px; background: #f8f8f8;text-align: center;position: relative;overflow: hidden;border: 1px solid #dadada;border-radius: 8px;float: left;display: block;font-size:0.1rem; }
+.carDoorLeft{width: 10%;position: absolute;top: 180px;left: 10px;z-index: 2;}
+.carDoorLeft2{width: 10%;position: absolute;top: 270px;left: 30px;z-index: 2;}
+.carDoorRight{width: 10%;position: absolute;top: 180px;right: 10px;z-index: 2;}
+.carDoorRight2{width: 10%;position: absolute;top: 270px;right: 30px;z-index: 2;}
+.driver{font-size: 12px;color:#000;position: absolute;bottom: 5%;left: 8%;}
+.copilot{font-size: 12px;color:#000;position: absolute;bottom: 5%;right: 10%;}
 .car1{z-index: 1;}
-.car1,.car2,.car3{width: 100%;position: absolute;top: 0px;left: 0;height: 300px;background-image:url(../img/wish/left/leftwingdoor0000.png) ;background-size: contain;background-repeat: no-repeat;}
+.car2,.car3{z-index: 0;}
+.car1,.car2,.car3{width: 100%;position: absolute;top: 0px;left: 0;height: 250px;background-image:url('../img/wish/left/leftwingdoor0000.png') ;background-size: cover;background-repeat: no-repeat;background-position: center;padding-top: 25px;}
 .leftDoor{width: 70%;position: absolute;top: 100px;left: 15%;display: none;}
 .rightDoor{width: 70%;position: absolute;top: 100px;left: 15%;opacity: 0;}
 
+.left_dotted{width: 10%;position: absolute;top: 20%;left: 5%;}
+.right_dotted{width: 10%;position: absolute;top: 20%;right: 5%;}
+.allClose{width: 40%;position: absolute;bottom: 44%;left: 28%;z-index: 2;}
+.forward_box{width: 40%;position: absolute;bottom: 18%;left: 28%;z-index: 2;}
+.trunk{width: 40%;position: absolute;bottom: 8%;left: 28%;z-index: 2;}
+.carShadow{width: 64%;position: absolute;bottom: 30%;left:16%;opacity: 0.8;}
+
+/* 座椅 */
+.chairBox{width: 77%;height:350px; background: #f8f8f8;text-align: center;position: relative;overflow: hidden;border: 1px solid #dadada;border-radius: 8px;float: left;display: none;font-size:0.1rem;background: url('../img/wish/chairBox/chairBox.jpg') no-repeat;background-position: center;background-size: cover;}
+.chairBoxIcon01,.chairBoxIcon02,.chairBoxIcon03{position: absolute;top: 17%;left: 20%;width: 14%;}
+.chairBoxIcon02{left:44% ;}
+.chairBoxIcon03{left: 67%;}
+.chairBoxIcon04,.chairBoxIcon05,.chairBoxIcon06{position: absolute;bottom: 20%;left: 20%;width: 14%;}
+.chairBoxIcon05{left:44% ;}
+.chairBoxIcon06{left: 67%;}
+
+/* 悬架 */
+.suspensionBox{width: 77%;height:350px; background: #f8f8f8;text-align: center;position: relative;overflow: hidden;border: 1px solid #dadada;border-radius: 8px;float: left;display: none;font-size:0.1rem;}
+.suspensionBox1{width: 100%;height: 70%;overflow: hidden;padding: 5px 0 0 5px;}
+.suspensionBox1Left{width: 25%;float: left;}
+.suspensionBox1Right{width: 75%;float: right;height: 100%;background: url("../img/wish/suspensionBox/car1.png") no-repeat;background-size: contain;background-position: right center;position: relative;}
+.suspensionBox1Right span{position: absolute;top: 12%;left: 5%;}
+.suspensionBox1Ul{border: 1px solid #dadada;border-radius: 5px;margin-bottom: 10px;}
+.suspensionBox1Ul li{padding: 3px 0}
+.suspensionBox1UlAstive{background: #becfe3;border-radius: 5px;}
+
+.suspensionBox2{padding: 0 0 0 5px;border-top: 1px solid #dadada;text-align: left; }
+.suspensionBox2 p{margin: 5px 0 5px 0;font-size: 0.1rem;} 
+.suspensionBox2 ul {width: 46%;color: #000;margin: 5px 0;}
+.suspensionBox2 ul li{width: 100%;    border: 1px solid #dadada;border-radius: 5px;text-align: center;padding: 3px 0;}
+/* 驾驶 */
+.driveBox{width: 77%;height:350px; background: #f8f8f8;text-align: center;position: relative;overflow: hidden;border: 1px solid #dadada;border-radius: 8px;float: left;display: none;padding: 5px 8px;color: #8f8f94;font-size:0.1rem;}
+.driveBox1{width: 100%;height: 55%;overflow: hidden;border-bottom: 1px solid #dadada;font-size: 12px;}
+.driveBox1Left{float: left;width: 47%;text-align: left;font-size: 12px;}
+.driveBox1Right{float: right;width: 48%;text-align: left;font-size: 12px;}
+.driveBox1Ul{margin: 0;padding: 0;overflow: hidden;border: 1px solid #dadada;border-radius: 5px;color:#56575c;}
+.driveBox1Ul li{float: left;width: 33.33%;text-align: center;padding: 2px 0;}
+.driveBoxActive{background: #2c7ada;color:#fff;border-radius: 5px;}
+.driveBox1Left span{font-size: 12px;color:#2c7ada;margin: 5px 0 17px 0;display: block;}
+.driveBox1Left p{margin-bottom: 3px;font-size: 12px;}
+.driveBox1Right p{margin-bottom: 3px;font-size: 12px;}
+.driveBox1UlRight{padding: 0;margin: 0;border: 1px solid #dadada;border-radius: 5px;}
+.driveBox1UlRight li{width: 100%;color:#b5b6ba;border-radius: 5px;text-align: center;padding: 2px 0;}
+.driveBox1UlRight2{padding: 0;margin: 0;border: 1px solid #dadada;border-radius: 5px;overflow: hidden;}
+.driveBox1UlRight2 li{float: left;width: 50%;text-align: center;padding: 2px 0;}
+
+.driveBox2{width: 100%;height: 30%;overflow: hidden;border-bottom: 1px solid #dadada;font-size: 12px;}
+.driveBox2 p{font-size: 12px;margin-bottom: 3px;}
+.driveBox2Left{float: left;width: 47%;text-align: left;font-size: 12px;color: #56575c;}
+.driveBox2Left span{color:#8f8f94 ;}
+.driveBox2Right{float: right;width: 48%;text-align: left;font-size: 12px;color: #56575c;}
+
+.driveBox3{width: 100%;height: 15%;overflow: hidden;font-size: 12px;}
+.driveBox3 p{font-size: 12px;margin-bottom: 3px;}
+.driveBox3Left{float: left;width: 47%;text-align: left;font-size: 12px;color: #56575c;}
+/* 寒冷天气 */
+.weatherBox{width: 77%;height:350px; background: #f8f8f8 url("../img/wish/weatherBox/car.png") no-repeat;text-align: center;position: relative;overflow: hidden;border: 1px solid #dadada;border-radius: 8px;float: left;display: none;font-size:0.1rem;    background-size: contain;background-position: center top;}
+.weatherBox span{position: absolute;bottom: 3%;left: 3%;border: 1px solid #dadada;border-radius: 5px;color: #000;background: #f8f8f8;padding: 5px;}
+/* 旅程 */
+.journeyBox{width: 77%;height:350px; background: #f8f8f8;text-align: center;position: relative;overflow: hidden;border: 1px solid #dadada;border-radius: 8px;float: left;display: none;font-size:0.1rem;padding: 10px 5px;}
+.journeyBox table{width: 100%;}
+.journeyBox tr{margin: 10px 0;}
+.journeyBox td{padding: 5px 0;width: 33.33%;}
+.tableTd01{text-align: left;}
+.tableTd02{text-align: right;}
+.tableTd01 input{vertical-align: middle;}
+.journeyBoxUl{width: 100%;overflow: hidden;}
+.journeyBoxUl li{width: 30%;float: left;border: 1px solid #dadada;border-radius: 5px;color: #000;margin-left: 2.5%;margin-top: 5%}
+.journeyBoxUl li span{display: block;}
+/* 显示 */
+.showBox{width: 77%;height:350px; background: #f8f8f8;text-align: center;position: relative;overflow: hidden;border: 1px solid #dadada;border-radius: 8px;float: left;display: none;font-size:0.1rem;padding: 10px;}
+.showBox p{text-align: left;font-size: 0.1rem;margin-bottom: 3px;overflow: hidden;}
+.autoLight{float: left;}
+.autoAdjust{float: right;}    
+.autoAdjust input{vertical-align: middle;}
+.showBox1{width: 100%;border: 1px solid #dadada; border-radius: 5px;padding: 10px;overflow: hidden;margin-bottom: 20px;}
+.mui-input-row{display: block;}
+.mui-input-range input[type=range]{height: 30px;background-color: #fff;border: 1px solid #dadada;margin: 0;}
+.mui-input-range input[type='range']::-webkit-slider-thumb{border-radius: 3px;width: 15%;}
+.mui-input-range .mui-tooltip{font-size: 0.1rem;line-height: 30px;text-shadow:none;background-color:inherit;border:none;opacity:1;width: inherit;height: inherit;top: 0;color: #fff;z-index: 0;}
+.mui-hidden{display: block!important;}
+.mui-input-row.mui-input-range{padding-right: 0;}
+
+.showBox1Ul{width: 50%;overflow: hidden;border: 1px solid #dadada;border-radius: 5px;margin: 0;padding: 0;float: left;color: #000;}
+.showBox1Ul li{width: 33.33%;float: left;padding: 5px 0;}
+.showBox1UlActive{background: #2c7ada;color: #fff;border-radius: 3px;}
+.showBox1Ul2{width: 30%;float: right;border: 1px solid #dadada;border-radius: 5px;}
+.showBox1Ul2 li{padding: 5px 0;}
+
+.showBox2{border: 1px solid #dadada;border-radius: 5px;padding: 5px;overflow: hidden;}
+.showBox2Ul{width: 40%;overflow: hidden;border: 1px solid #dadada;border-radius: 5px;margin-right: 10px;}
+.showBox2Ul li{float: left;width: 50%;padding: 5px 0;}
+.showBox2 input{vertical-align: middle;}
+.showBox2 div{line-height: 26px;padding: 5px 0;}
+/* 电源 */
+.powerBox{width: 77%;height:350px; background: #f8f8f8;text-align: center;position: relative;overflow: hidden;border: 1px solid #dadada;border-radius: 8px;float: left;display: none;font-size:0.1rem;padding: 10px;}
+.powerBox p{font-size: 0.1rem;margin-bottom:5px; }
+.powerBox1{width: 100%;overflow: hidden;}
+.powerBox1Left{width: 52%;margin-top: 16%;}
+.powerBox1Right{width: 48%;}
+.powerBox1Left img{width: 60%;}
+.powerBox1Right img{width: 100%;}
+
+.powerBox2{width: 60%;border: 1px solid #dadada;border-radius: 5px;text-align: left;padding: 10px;}
+.powerBox2Btn{text-align: center;display: block;border: 1px solid #dadada;border-radius: 5px;background: #fff;padding: 5px 0;color: #000;}
+
+/* 第三块区域 */
+.threePieces{width: 94%;background: #f8f8f8;margin: 5% auto;border-radius: 10px;border: 1px solid #dadada;height: 330px;position: relative;font-size:0.1rem;}
+
+.deng01{width: 12%;position: absolute;top: 3%;left: 3%;background: #fff;border: 1px solid #dadada;text-align: center;border-radius: 5px;padding:4px 0px;}
+.deng01 img{vertical-align: middle;width: 50%;}
+
+.deng02{width: 12%;position: absolute;top: 3%;right: 3%;background: #fff;border: 1px solid #dadada;text-align: center;border-radius: 5px;padding:4px 0px;}
+.deng02 img{vertical-align: middle;width: 50%;}
+
+.deng03{width: 16%;position: absolute;top: 3%;left: 16%;background: #fff;border: 1px solid #dadada;text-align: center;border-radius: 5px;padding:4px 0px;}
+
+.deng04{width: 16%;position: absolute;top: 3%;left: 33%;background: #fff;border: 1px solid #dadada;text-align: center;border-radius: 5px;padding:4px 0px;}
+
+.deng05{width: 16%;position: absolute;top: 33%;left: 3%;background: #fff;border: 1px solid #dadada;text-align: center;border-radius: 5px;padding:4px 0px;}
+.deng05 img{vertical-align: middle;width: 26%;}
+
+.deng06{width: 16%;position: absolute;top: 46%;left: 3%;background: #fff;border: 1px solid #dadada;text-align: center;border-radius: 5px;padding:4px 0px;}
+.deng06 img{vertical-align: middle;width: 26%;}
+
+.deng07{width: 20%;position: absolute;bottom: 4%;right: 3%;background: #fff;border: 1px solid #dadada;text-align: center;border-radius: 5px;padding:4px 0px;}
+
+.deng08{width: 66%;position: absolute;bottom: 4%;left: 3%;background: #fff;border: 1px solid #dadada;text-align: center;border-radius: 5px;margin: 0;padding: 0;overflow: hidden;}
+.deng08 img{vertical-align: middle;width: 50%;}
+.deng08_03 img{width: 30%;}
+.deng08 li{width: 100%;height: 100%;}
+.deng08_01,.deng08_02,.deng08_03,.deng08_04{width: 25%;display: inline-block;height: 100%;float: left;}
+.mui-btn{border: none;    padding: 4.5px 0;}
+
+.dengActive{background: #2c7ada;color:#fff;}
+.dengActive2{background: #2c7ada;color:#fff;border-radius: 3px;}
+.car4{width: 60%;position: absolute;top:26%;right: 6%;}
+.car4 img{width: 100%;}
+
+/* 底部设置 */
+.footerSeeting{width: 100%;background: #020202;color:#a6a6a6;padding: 5% 0;font-size: 0.1rem;}
+.footerSeetingUl{width: 100%;overflow: hidden;padding: 0;margin: 0;height: 100px;}
+.footerSeetingUl li{width: 11.11%;float: left;text-align: center;}
+
+.icon01{width: 70%;}
+.icon02{width: 40%;}
+.icon03{width: 50%;display: block;margin: 3px auto 6px;}
+.icon04{width: 35%;}
+.icon05{width: 50%;}
+.icon06{width: 50%;}
+.icon15{width: 18%;}
+.icon08{width: 50%;display: block;margin: 26px auto 3px;}
+.icon11{width: 40%;}
+.icon10{width: 50%;display: block;margin: 3px auto 6px;}
+.icon12{width: 50%;display: block;margin: 26px auto 20px;}
+.icon13{width: 50%;}
+.icon14{width: 50%;}
+
+.li1{margin: 25px auto 0;position: relative;}
+.li2{margin: 5px auto 0;text-align: center;position: relative;color: #a6a6a6;}
+.leftSeatTemperature{font-size: 13px;position: absolute;top: 26px;right:10px;}
+.li3,.li7{position: relative;}
+.leftAirconditionTemperature{margin: 22px 0 18px 0;display: block;color: #353535;}
+.icon07{width: 80%;display: block;margin:60px auto 0;}
+.li5{position: relative;margin: 5px auto 0;}
+.li5 span{font-size: 13px;color: #353535;}
+.icon09{width: 80%;display: block;margin:60px  auto 0;}
+.rightAirconditionTemperature{margin: 22px 0 18px 0;display: block;color: #353535;}
+.li8{margin: 5px auto 0;text-align: center;position: relative;color: #a6a6a6;}
+.rightSeatTemperature{font-size: 13px;position: absolute;top: 26px;left:8px;}
