@@ -79,9 +79,10 @@
 						<div class="car1"></div>  
 						<div class="car2"></div>
 						<div class="car3"></div>
+						<div class="car5"></div>
 						<img class="allClose" onclick="allClose()" src="img/wish/allClose.png" >
-						<img class="forward_box" src="img/wish/forward_box.png" >
-						<img class="trunk" src="img/wish/trunk.png" >
+						<img class="forward_box" onclick="clickHood()" src="img/wish/forward_box.png" >
+						<img class="trunk" onclick="clickTrunk()" src="img/wish/trunk.png" >
 						<img id="carDoorLeft"  onclick="clickLeftOpen()" class="carDoorLeft" src="img/wish/left_door.png" >
 						<img id="carDoorLeft2"  onclick="clickLeftClose()" class="carDoorLeft2" src="img/wish/driver.png" >
 						<span class="driver">驾驶员</span>
@@ -290,11 +291,18 @@
 					<div class="box powerBox carPower">
 						<div class="powerBox1">
 							<div class="powerBox1Left floatLeft">
-								<img src="img/wish/powerBox/tingche.jpg" alt="">
+								<div class="powerBox1P">
+									<p class="zhuche">
+										<span class="zhucheP">P </span>
+										<span> 汽车已处于驻车模式</span>
+									</p>
+									<p>长按已驻车</p>
+								</div>
 								<p>脚必须放在制动踏板上</p>
 							</div>
 							<div class="powerBox1Right floatRight">
-								<img src="img/wish/powerBox/fangxiangpan.jpg" alt="">
+								<img src="img/wish/weatherBox/fangxiangpan.png" alt="">
+								 <div class="dangwei">也可以选择换挡杆上的一个档位</div>
 							</div>
 						</div>
 						<div class="powerBox2">
@@ -424,27 +432,42 @@
 			// });
 
 // 			//实现图片的预加载
-			var imgar = [];
+			var imgar1 = [];
 			var imgar2 = [];
+			var imgar3 = [];
+			var imgar4 = [];
 		    function eightimg(){
-			    for(o=0;o<60;o++){
+			    for(let o=0;o<60;o++){
 					if(o<10){
 						o = "0"+o;
 					}else{
 						o=o;
 					}
-			    	imgar[o] = new Image();
+			    	imgar1[o] = new Image();
 					imgar2[o] = new Image();
-			        imgar[o].src = "img/wish/left/leftwingdoor00"+o+".png"; 
+					imgar3[o] = new Image();
+					imgar4[o] = new Image();
+			        imgar1[o].src = "img/wish/left/leftwingdoor00"+o+".png"; 
 					imgar2[o].src = "img/wish/right/rightwingdoor00"+o+".png"; 
-			        imgar[o].onload=function(){
+					imgar3[o].src = "img/wish/hood/yinqinggai00"+o+".png"; 
+					imgar4[o].src = "img/wish/trunk/houbeixiang00"+o+".png"; 
+					
+			        imgar1[o].onload=function(){
 				        this.width = 1280;
 				        this.height =720;
 			        };
 					imgar2[o].onload=function(){
 				        this.width = 1280;
 				        this.height =720;
-			        } 
+			        };
+			 		imgar3[o].onload=function(){
+			 	        this.width = 1280;
+			 	        this.height =720;
+			         } ;
+					imgar4[o].onload=function(){
+			         this.width = 1280;
+			         this.height =720;
+			         } 
 			     }
 		    }
 			eightimg(); 
@@ -457,10 +480,40 @@
 				$('.'+name).fadeIn().siblings(".box").fadeOut(0);
 			});
 			// 门
-			// 左门动画
-			var tl1 = new TimelineMax({});
+			
 			var t = 0.02;
-			for(var i = 0; i<60;i++){
+			var tl1 = new TimelineMax({});
+			var tl2 = new TimelineMax({});
+			var tl3 = new TimelineMax({});
+			var tl4 = new TimelineMax({});
+			// 引擎盖
+			for(let i = 0; i<60;i++){
+				if(i<10){
+					i = "0"+i;
+				}else{
+					i = i;
+				}
+				tl3.to($('.car1'), t, { "background-image": "url('img/wish/hood/yinqinggai00"+i+".png')"  });
+			}
+			tl3.stop();
+			function clickHood(){
+				tl3.play();
+			}
+			// 后备箱
+			for(let i = 0; i<60;i++){
+				if(i<10){
+					i = "0"+i;
+				}else{
+					i = i;
+				}
+				tl4.to($('.car5'), t, { "background-image": "url('img/wish/trunk/houbeixiang00"+i+".png')"  });
+			}
+			tl4.stop();
+			function clickTrunk(){
+				tl4.play();
+			}
+			// 左门动画
+			for(let i = 0; i<60;i++){
 				if(i<10){
 					i = "0"+i;
 				}else{
@@ -518,15 +571,14 @@
 			// 左门动画
 			 
 			// 右门动画
-			var tl2 = new TimelineMax({});
-			var t2 = 0.02;
-			for(var k = 0; k<60;k++){
+			
+			for(let k = 0; k<60;k++){
 				if(k<10){
 					k = "0"+k;
 				}else{
 					k = k;
 				}
-				tl2.to($('.car3'), t2, { "background-image": "url('img/wish/right/rightwingdoor00"+k+".png')"  });
+				tl2.to($('.car3'), t, { "background-image": "url('img/wish/right/rightwingdoor00"+k+".png')"  });
 			}
 			tl2.stop();
 			
@@ -580,6 +632,8 @@
 			function allClose(){
 				tl1.reverse();
 				tl2.reverse();
+				tl3.reverse();
+				tl4.reverse();
 			}
 			
 			// 第三块区域
@@ -643,22 +697,6 @@
 			$('.deng08').on("click","li",function(){	
 				$(this).children().addClass('dengActive2').parent().siblings().children().removeClass('dengActive2');
 			});
-			// 灯08切换js方法
-			// var deng08 = document.getElementsByClassName("deng08Li");
-			// for(var a=0;a<deng08.length;a++){
-			// 	var deng8 = deng08[a];
-			// 	deng8.index = a;
-			// 	deng8.onclick = function () {
-			// 		for(var b= 0;b<deng08.length;b++){
-			// 			deng08[b].children[0].classList.remove("dengActive2");
-			// 		}				
-			// 		deng08[this.index].children[0].classList.add("dengActive2");
-			// 	}	
-			// }
-
-
-	
-			
 			
 			// 第四块区域
 			// 增加温度, 降低温度封装方法
@@ -689,17 +727,6 @@
 				}
 			});
 			// 悬架js
-			// var suspension = document.getElementsByClassName("suspensionBox1UlLi");
-			// for(var a=0;a<suspension.length;a++){
-			// 	var suspensions = suspension[a];
-			// 	suspensions.index = a;
-			// 	suspensions.onclick = function () {
-			// 		for(var b= 0;b<suspension.length;b++){
-			// 			suspension[b].classList.remove("suspensionBox1UlAstive");
-			// 		}				
-			// 		suspension[this.index].classList.add("suspensionBox1UlAstive");
-			// 	}	
-			// }
 			
 			// 驾驶
 			$('.driveBox1UlClick').off('click');
@@ -720,7 +747,6 @@
 					$(".numB").html("0");
 				}
 			});
-	
 		</script>
 	</body>
 

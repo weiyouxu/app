@@ -6,19 +6,20 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <style>
-        body{padding: 0;margin: 20px auto;text-align: center;}
+        body{padding: 0;margin: 0px auto;text-align: center;}
         #canvas{border: 1px solid #000}
     </style>
 </head>
-<body>
-    <canvas id="canvas"></canvas>
+<body style="width:100%;height:100%;">
+    <canvas id="canvas" style="height:100%;"></canvas>
     <script>
         var window_width = 1024;
         var window_heihgt = 768;
         var radius = 8;
         var margin_top = 60;
         var margin_left = 30;
-        var endTime = new Date(2018,11,25,18,48,52);
+        var endTime = new Date();
+        endTime.setTime(endTime.getTime() + (3600*1000));
         var curShowTimeSecond = 0;
         var ball = {x:200,y:100,r:20,g:2,vx:-4,vy:0,color:"#005588"};
         var balls = [];
@@ -26,7 +27,12 @@
 
 
         window.onload = function (){
+            window_width = document.body.clientWidth-20;
+            window_heihgt = document.documentElement.clientHeight-20;
 
+            margin_left = Math.round(window_width/10);
+            radius = Math.round(window_width*4/5/108) - 1;
+            margin_top = Math.round(window_heihgt /5 )
             var digit = [
                 [
                     [0,0,1,1,1,0,0],
@@ -220,6 +226,7 @@
                 }
 
                 updateBalls();
+                
             }
             function updateBalls(){
                 for(var i = 0; i<balls.length;i++){
@@ -229,8 +236,18 @@
                     
                     if(balls[i].y >= window_heihgt - radius){
                         balls[i].y = window_heihgt - radius;
-                        balls[i].vy = -balls[i].vy*0.66;
+                        balls[i].vy = - balls[i].vy*0.45;
                     }
+                }
+                var cnt = 0;
+                for(var i=0;i<balls.length;i++){
+                    if(balls[i].x+radius > 0 && balls[i].x - radius < window_width){
+                        balls[cnt++] = balls[i];
+                        
+                    }
+                }
+                while(balls.length > Math.min(1000,cnt)){
+                    balls.pop();
                 }
             };
             function addBalls(x,y,num){

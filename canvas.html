@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>canvas</title>
+    <style>
+        body{margin:  0 auto;text-align: center;}
+        #canvas{border: 1px solid #dadada;}
+    </style>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+    <script>
+        var canvas = document.getElementById("canvas");
+        var context = canvas.getContext("2d");
+        canvas.width = 800;
+        canvas.height = 800;
+        // 画直线
+        /*
+        context.beginPath();//一个图形绘制开始
+        context.moveTo(100,100);//起点 100 ，100 位置
+        context.lineTo(500,500);//终点 500,500 位置 
+        context.lineTo(100,500);
+        context.lineTo(100,100);
+        context.lineWidth = 5;// 线的宽度
+        context.strokeStyle = "#dadada";//线的颜色
+        context.stroke();//生成 上面 100,100 到 500,500的线 ，stroke 方法 是绘制线条， moveTo，lineTo 状态生成
+
+        context.fillStyle = "rgba(125,34,140,0.5)"; // 给绘制的图形 填充 颜色数值
+        context.fill(); // 给绘制的图形 填充颜色 ，用fill的时候 会自动添加一条闭合线
+        context.closePath();//一个图形绘制结束 和 beginPath 不一定要成对出现，当成对出现的时候如果没有闭合线 canvas会自动添加一条闭合收尾的线，如果在一个for循环里面只有beginPath ，canvas就不会去添加一条闭合线
+
+        //如果要2个图片一定要用  beginPath 和 closePath 包裹起来
+        context.beginPath();
+        context.moveTo(400,400);
+        context.lineTo(400,100);
+        context.strokeStyle = "red";
+        context.stroke();
+        context.closePath();
+
+        // 绘制 弧线 和 园 
+        // context.arc(
+        //     contextX,contextY,startingAngle,endingAngle,anticlockwise
+        //     //圆心的 x，圆心的 y，哪个弧度为开始，哪个弧度为结束，顺时针 false或者逆时针 true
+        // )
+        context.beginPath();
+        context.arc(300,300,200,0,2*Math.PI,false);// 里面的2*Math.PI 是指 园画多少 一个园分为 4个PI 一个PI为0.5
+        context.stroke();
+        context.closePath();
+
+        fillRect 和 strokeRect的用法 和 fill 和 stroke类似 会用到fillStyle 和 strokeStyle ，rect
+
+
+        线条的属性：
+        1：lineWidth    线条的宽度
+        2：lineCap      值有：butt（default）默认样子 ，round 线条圆角头，square线条方头 只能用在线条的 开始处和结尾处
+        3: lineJoin     miter 线与线之间的衔接 默认尖角 ，bevel 斜接，round 圆角 只能用在线条的 开始处和结尾处
+        4：lineLimit   lineLimit = 10 ， 只有在lineJoin = miter的情况下 才有效，意思是 线与线之间的衔接处的 内角和外角的最大值是10 ，如果大于10 会变成lineJoin = bevel 的形式显示
+        5: 图形变换 translate(x,y) 位移, rotate(deg) 旋转 , scale(sx,sy) 缩放 ，scale 不止放大缩小 xy 也会放大缩小 其他属性 
+        6：save(),restore() 成对出现 save 保存 canvas的 所有状态， restore返回canvassave之前的所有状态   
+        7：变换矩阵  |a c e|    a 水平缩放（1） c 垂直倾斜（0） e 水平位移（0）
+                    |b d f|   b 水平倾斜（0） d 垂直缩放（1） f 垂直位置（0）
+                    |0 0 1|    
+            可用transform（a，b，c，d，e，f）直接设置变换矩阵
+        8：setTranform忽略之前的transform 状态，从最初的效果开始
+        9：填充样式fillStyle 
+            线性渐变色 var grd = context.createLinearGradient(xstart,ystart,xend,yend); grd.addColorStop(stop,color);
+            镜像渐变色 Radial Gradient， var grd = context.createRadialGradient(x0,y0,r0,x1,y1,r1)
+        */
+        context.fillStyle  = "black";
+        context.fillRect(0,0,canvas.width,canvas.height);
+        var grd = context.createRadialGradient(canvas.width/2,canvas.height,0,canvas.width/2,canvas.height,canvas.height); 
+        grd.addColorStop(0.0,"#035");
+        grd.addColorStop(1.0,"black");
+        context.fillStyle  = grd;
+        context.fillRect(0,0,canvas.width,canvas.height);
+        
+        for(var j=0;j<200;j++){
+            var r=Math.random()*5+5;
+            var x=Math.random()*canvas.width;
+            var y=Math.random()*canvas.height*0.65;
+            var a=Math.random()*360;
+            drawStar(context,r/2,r,x,y,a);
+	    }
+
+        function drawStar(cnt,r,R,x,y,rot){
+            cnt.beginPath();
+            if(!rot) rot=0;
+            for(var i=0;i<5;i++){
+                cnt.lineTo(Math.cos((18+i*72-rot)/180*Math.PI)*R+x,-Math.sin((18+i*72-rot)/180*Math.PI)*R+y);
+                cnt.lineTo(Math.cos((54+i*72-rot)/180*Math.PI)*r+x,-Math.sin((54+i*72-rot)/180*Math.PI)*r+y);
+            }
+            cnt.closePath();
+
+            cnt.lineWidth=3;
+            cnt.strokeStyle="#fb3";
+            cnt.fillStyle="#fb3";
+            cnt.lineJoin="round";
+
+            cnt.stroke();
+            cnt.fill();
+        }
+
+
+ 
+    </script>
+</body>
+</html>
