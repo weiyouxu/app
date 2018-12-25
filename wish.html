@@ -31,7 +31,7 @@
 					<span class="navClose"><!-- <img class="navCloseImg" src="img/wish/close.png" > --></span>
 					<span class="control navActive">控制</span>
 					<!-- <span class="setting">设置</span> -->
-					<span class="electricity navActive"><img src="img/wish/electricity.png" >充电</span>
+					<div class="electricity navActive"><img src="img/wish/electricity.png" >充电</div>
 				</div>
 				<!-- 第二块内容 -->
 				<div class="secondPieces">
@@ -80,9 +80,9 @@
 						<div class="car2"></div>
 						<div class="car3"></div>
 						<div class="car5"></div>
-						<img class="allClose" onclick="allClose()" src="img/wish/allClose.png" >
-						<img class="forward_box" onclick="clickHood()" src="img/wish/forward_box.png" >
-						<img class="trunk" onclick="clickTrunk()" src="img/wish/trunk.png" >
+						<div class="allClose" onclick="allClose()" >全部关闭</div>
+						<div class="forward_box" onclick="clickHood()">前备箱</div>
+						<div class="trunk" onclick="clickTrunk()">行李箱</div>
 						<img id="carDoorLeft"  onclick="clickLeftOpen()" class="carDoorLeft" src="img/wish/left_door.png" >
 						<img id="carDoorLeft2"  onclick="clickLeftClose()" class="carDoorLeft2" src="img/wish/driver.png" >
 						<span class="driver">驾驶员</span>
@@ -106,9 +106,9 @@
 							<div class="suspensionBox1Left">
 								<p>车身高度</p>
 								<ul class="suspensionBox1Ul">
-									<li class="suspensionBox1UlLi suspensionBox1UlAstive">很高</li>
+									<li class="suspensionBox1UlLi">很高</li>
 									<li class="suspensionBox1UlLi">高</li>
-									<li class="suspensionBox1UlLi">标准</li>
+									<li class="suspensionBox1UlLi suspensionBox1UlAstive">标准</li>
 									<li class="suspensionBox1UlLi">低</li>
 									<li class="suspensionBox1UlLi">很低</li>
 								</ul>
@@ -118,6 +118,8 @@
 							</div>
 							<div class="suspensionBox1Right">
 								<span>踩下制动踏板以启用</span>
+								<img class="carHarf" src="img/wish/suspensionBox/carHarf.png" alt="">
+								<img class="tyre" src="img/wish/suspensionBox/tyre.png" alt="">
 							</div>
 						</div>
 						<div class="suspensionBox2">
@@ -427,9 +429,9 @@
 		<!--主体-->
 		<script type="text/javascript"> 
 // 			
-			// mui.plusReady(function(){
-			// 	plus.screen.lockOrientation("portrait-primary"); 				
-			// });
+			mui.plusReady(function(){
+				plus.screen.lockOrientation("portrait-primary"); 				
+			});
 
 // 			//实现图片的预加载
 			var imgar1 = [];
@@ -535,7 +537,7 @@
 				// 		"Content-Type": "application/json; charset=utf-8"
 				// 	},
 				// 	type: 'post',
-				// 	url: 'http://172.16.1.198/socket',
+				// 	url: 'http://172.16.0.222:4689/socket',
 				// 	dataType: 'json',
 				// 	data: JSON.stringify(params),
 				// 	success: function(data) { 
@@ -557,7 +559,7 @@
 				// 		"Content-Type": "application/json; charset=utf-8"
 				// 	},
 				// 	type: 'post',
-				// 	url: 'http://172.16.1.198/socket',
+				// 	url: 'http://172.16.0.222:4689/socket',
 				// 	dataType: 'json',
 				// 	data: JSON.stringify(params),
 				// 	success: function(data) { 
@@ -593,7 +595,7 @@
 				// 		"Content-Type": "application/json; charset=utf-8"
 				// 	},
 				// 	type: 'post',
-				// 	url: 'http://172.16.1.198/socket',
+				// 	url: 'http://172.16.0.222:4689/socket',
 				// 	dataType: 'json',
 				// 	data: JSON.stringify(params),
 				// 	success: function(data) { 
@@ -615,7 +617,7 @@
 				// 		"Content-Type": "application/json; charset=utf-8"
 				// 	},
 				// 	type: 'post',
-				// 	url: 'http://172.16.1.198/socket',
+				// 	url: 'http://172.16.0.222:4689/socket',
 				// 	dataType: 'json',
 				// 	data: JSON.stringify(params),
 				// 	success: function(data) { 
@@ -657,7 +659,7 @@
 				// 			"Content-Type": "application/json; charset=utf-8"
 				// 		},
 				// 		type: 'post',
-				// 		url: 'http://172.16.1.198/socket',
+				// 		url: 'http://172.16.0.222:4689/socket',
 				// 		dataType: 'json',
 				// 		data: JSON.stringify(params),
 				// 		success: function(data) { 
@@ -679,7 +681,7 @@
 				// 			"Content-Type": "application/json; charset=utf-8"
 				// 		},
 				// 		type: 'post',
-				// 		url: 'http://172.16.1.198/socket',
+				// 		url: 'http://172.16.0.222:4689/socket',
 				// 		dataType: 'json',
 				// 		data: JSON.stringify(params),
 				// 		success: function(data) { 
@@ -714,9 +716,47 @@
 			}
 			
 			// 悬架jq
+		
+			$(".suspensionBox1Right")
 			$('.suspensionBox1Ul').off('click');
 			$('.suspensionBox1Ul').on("click","li",function(){
 				$(this).addClass("suspensionBox1UlAstive").siblings().removeClass("suspensionBox1UlAstive");
+				var tl5 = new TimelineMax({});
+				tl5.to($('.carHarf'), 0.5, { "bottom":"28%"});
+				var tl6 = new TimelineMax({});
+				tl6.to($('.carHarf'), 0.5, { "bottom":"27%"});
+				var tl7 = new TimelineMax({});
+				tl7.to($('.carHarf'), 0.5, { "bottom":"26%"});
+				var tl8 = new TimelineMax({});
+				tl8.to($('.carHarf'), 0.5, { "bottom":"25%"});
+				var tl9 = new TimelineMax({});
+				tl9.to($('.carHarf'), 0.5, { "bottom":"24%"});
+				
+				tl5.pause();
+				tl6.pause();
+				tl7.pause();
+				tl8.pause();
+				tl9.pause();
+				var y = 0;
+				switch($(this).index()){
+					case 0:
+					tl6.kill();tl7.kill();tl8.kill();tl9.kill();tl5.play();
+					break;
+					case 1:
+					tl5.kill();tl7.kill();tl8.kill();tl9.kill();tl6.play();
+					break;
+					case 2:
+					tl5.kill();tl6.kill();tl8.kill();tl9.kill();tl7.play();
+					break;
+					case 3:
+					tl5.kill();tl6.kill();tl7.kill();tl9.kill();tl8.play();
+					break;
+					case 4:
+					tl5.kill();tl6.kill();tl7.kill();tl8.kill();tl9.play();
+					break;
+				}
+				
+				// tl5.to($('.carHarf'), 0.5, { "bottom":y});
 			});
 			$('.suspensionBox1Ul2,.driveBox1UlRight,.showBox1Ul2').off('click');
 			$('.suspensionBox1Ul2,.driveBox1UlRight,.showBox1Ul2').on("click","li",function(){

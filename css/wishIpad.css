@@ -1,3 +1,4 @@
+body,html{font-size:825%; }
 .navClose{margin: 0 35% 0 5%;}
 .electricity {width: 20%; margin-left: 14%;}
 
@@ -6,7 +7,7 @@
 .carTitle{height: 500px;}
 .carTitleUl{height: 100%;    padding-bottom: 0px;}
 .carTitleUl li {height: 12.5%;line-height: 34px;}
-.car1, .car2, .car3{height: 405px;}
+.car1, .car2, .car3,.car5{height: 405px;}
 .carDoorLeft{top: 65%;left: 5%;}
 .carDoorLeft2{top:78%;left: 12%;}
 .carDoorRight{top: 65%;right: 5%;}
@@ -14,24 +15,47 @@
 .driver{left: 14%;}
 .copilot{right:15%}
 
-.allClose{bottom:40%;width: 34%;left: 31%;}
-.forward_box{bottom: 13%;width: 34%;left: 31%;}
-.trunk{bottom:3%;width: 34%;left: 31%;}
+.allClose{bottom:40%;width: 29%;left: 35.5%;padding:8px 0;}
+.forward_box{bottom: 12%;width: 29%;left: 35.5%;padding:8px 0;}
+.trunk{bottom:3%;width: 29%;left: 35.5%;padding:8px 0;}
 .carShadow{width: 57%;bottom: 23%;left: 22%;}
 
+.tyre{bottom: 10%;}
+/* .carHarf{bottom:26%} */
+.suspensionBox1{padding: 20px 0 0 20px;}
+.suspensionBox2 ul li{padding: 10px 0;}
+.suspensionBox2{    padding: 0 0 0 20px;}
 
+.driveBox{padding: 20px 20px 0 20px;}
+.journeyBox{padding: 20px 20px 0 20px;}
+.showBox{padding: 20px 20px 0 20px;}
+.powerBox{padding: 20px 20px 0 20px;}
+
+.suspensionBox1Ul li{padding: 8px 0;}
+.driveBox1{height: 46%;}
+.driveBox2{margin: 10px 0;}
+.driveBox3{height: 19%;}
+.driveBox1Ul li{padding: 6px 0;}
+.driveBox1UlRight li{padding: 6px 0}
+.driveBox1UlRight2 li{padding: 6px 0}
+.driveBox1UlRight2{margin-top: 25px;margin-bottom: 10px;}
+.journeyBox td{padding:10px 0;}
+.powerBox1P{padding:10px;}
+.powerBox p{padding: 15px 0;}
+.powerBox2{margin-top: 18px;}
+.dangwei{padding:20px 0;}
 .threePieces{height: 430px;}
 .deng01 img,.deng02 img{width: 30%;}
 .deng03{width: 14%;}
-.deng04{width: 14%;left: 35%;}
+.deng04{width: 14%;left: 31%;}
 .deng05{width: 14%;}
 .deng06{width: 14%;}
 .deng05 img,.deng06 img{width: 16%;}
-.deng07{width: 17%;}
+.deng07{width: 17%;padding: 8px 0;}
 .deng08{width: 58%;}
 .deng08 img{width: 40%;}
 .deng08_03 img{width: 28%;}
-
+.mui-btn{    padding: 8px 8px;}
 
 .footerSeetingUl{height: 150px;}
 .li1{margin: 50px auto 0;;}
