@@ -84,11 +84,15 @@
 						<div class="forward_box" onclick="clickHood()">前备箱</div>
 						<div class="trunk" onclick="clickTrunk()">行李箱</div>
 						<img id="carDoorLeft"  onclick="clickLeftOpen()" class="carDoorLeft" src="img/wish/left_door.png" >
-						<img id="carDoorLeft2"  onclick="clickLeftClose()" class="carDoorLeft2" src="img/wish/driver.png" >
+						<img id="carDoorLeftClose"  onclick="clickLeftClose()" class="carDoorLeftClose" src="img/wish/leftClose.png" >
+
+						<img id="carDoorLeft2"  onclick="carDoorLeft2()" class="carDoorLeft2" src="img/wish/driver.png" >
 						<span class="driver">驾驶员</span>
 						<span class="copilot">乘客</span>
 						<img id="" onclick="clickRightOpen()" class="carDoorRight" src="img/wish/right_door.png" >
-						<img id="" onclick="clickRightClose()" class="carDoorRight2" src="img/wish/copilot.png" >
+						<img id="" onclick="clickRightClose()" class="carDoorRightClose" src="img/wish/rightClose.png" >
+						
+						<img id="" onclick="carDoorRight2()" class="carDoorRight2" src="img/wish/copilot.png" >
 					</div>
 					<!-- 座椅盒子 -->
 					<div class="box chairBox carChair">
@@ -317,10 +321,10 @@
 				</div>
 				<!-- 第三块内容 -->
 				<div class="threePieces">
-					<div class="deng01" onclick="deng('deng01')">
+					<div class="deng01" onclick="deng('deng01','deng01','deng01o')">
 						<img class="" src="img/wish/deng01.png" >
 					</div>
-					<div class="deng02" onclick="deng('deng02')">
+					<div class="deng02" onclick="deng('deng02','deng02','deng02o')">
 						<img  src="img/wish/deng02.png" >
 					</div>
 					<div class="deng03" onclick="deng('deng03')">
@@ -329,11 +333,11 @@
 					<div class="deng04 dengActive" onclick="deng('deng04')" >
 						<span>氛围灯</span>
 					</div>
-					<div class="deng05" onclick="deng('deng05')">
-						<span><img src="img/wish/deng03.png" >&nbsp;&nbsp;后</span>
+					<div class="deng05" onclick="deng('deng05','deng03','deng03o')">
+						<img src="img/wish/deng03.png" >&nbsp;&nbsp;后
 					</div>
-					<div class="deng06" onclick="deng('deng06')">
-						<span><img src="img/wish/deng04.png" >&nbsp;&nbsp;前</span>
+					<div class="deng06" onclick="deng('deng06','deng04','deng04o')">
+						<img src="img/wish/deng04.png" >&nbsp;&nbsp;前
 					</div>
 					<div class="deng07" onclick="deng('deng07')">
 						<span>自动远光灯</span>
@@ -432,7 +436,13 @@
 			mui.plusReady(function(){
 				plus.screen.lockOrientation("portrait-primary"); 				
 			});
-
+			// 定义变量
+			var clickHoodState = true; //前备箱状态
+			var clickTrunkState = true;//后备箱状态
+			var carDoorLeft2State = true;//主驾驶
+			var carDoorRight2State = true;//副驾驶
+			var frontLight = true;//前灯
+			var afterLight = true;//后灯
 // 			//实现图片的预加载
 			var imgar1 = [];
 			var imgar2 = [];
@@ -481,8 +491,7 @@
 				var name = $(this).attr("data-name");
 				$('.'+name).fadeIn().siblings(".box").fadeOut(0);
 			});
-			// 门
-			
+
 			var t = 0.02;
 			var tl1 = new TimelineMax({});
 			var tl2 = new TimelineMax({});
@@ -499,7 +508,36 @@
 			}
 			tl3.stop();
 			function clickHood(){
-				tl3.play();
+				var params = {};
+				params.state = clickHoodState;
+				params.type = "CtrlEngineCover";
+				params.action = "revice";
+				console.log(params)
+				
+				$.ajax({
+					headers: {
+						"Content-Type": "application/json; charset=utf-8"
+					},
+					type: 'post',
+					url: 'http://172.16.0.222:4689/socket',
+					dataType: 'json',
+					data: JSON.stringify(params),
+					success: function(data) { 
+						console.log(data);
+						if(clickHoodState){
+							tl3.play();
+							clickHoodState = false;
+						}else{
+							tl3.reverse();
+							clickHoodState = true;
+						}
+						console.log(JSON.stringify(params))
+					},
+					error: function(data) {
+						console.log(data)
+					}
+				});
+			
 			}
 			// 后备箱
 			for(let i = 0; i<60;i++){
@@ -512,7 +550,33 @@
 			}
 			tl4.stop();
 			function clickTrunk(){
-				tl4.play();
+				var params = {};
+				params.state = clickTrunkState;
+				params.type = "CtrlTrunk";
+				params.action = "revice"; 
+				console.log(params)
+				$.ajax({
+					headers: {
+						"Content-Type": "application/json; charset=utf-8"
+					},
+					type: 'post',
+					url: 'http://172.16.0.222:4689/socket',
+					dataType: 'json',
+					data: JSON.stringify(params),
+					success: function(data) { 
+						if(clickTrunkState){
+							tl4.play();
+							clickTrunkState = false;
+						}else{
+							tl4.reverse();
+							clickTrunkState = true;
+						}
+						console.log(JSON.stringify(params))
+					},
+					error: function(data) {
+						console.log(data)
+					}
+				});
 			}
 			// 左门动画
 			for(let i = 0; i<60;i++){
@@ -526,49 +590,58 @@
 			tl1.stop();
 			
 			function clickLeftOpen(){
-				tl1.play();
-				// ajax 打开左门
-				// var params = {};
-				// params.state = "true";
-				// params.type = "CtrlLeftFountDoor";
-				// params.action = "mControl";
-				// $.ajax({
-				// 	headers: {
-				// 		"Content-Type": "application/json; charset=utf-8"
-				// 	},
-				// 	type: 'post',
-				// 	url: 'http://172.16.0.222:4689/socket',
-				// 	dataType: 'json',
-				// 	data: JSON.stringify(params),
-				// 	success: function(data) { 
-				// 		console.log(data);
-				// 	},
-				// 	error: function(data) {
-				// 		console.log(data)
-				// 	}
-				// });
+				// ajax 打开主驾驶 后左门
+				var params = {};
+				params.action = "revice";
+				params.type = "CtrlLeftBehindDoor";
+				params.state = true;
+				console.log(params)
+				$.ajax({
+					headers: {
+						"Content-Type": "application/json; charset=utf-8"
+					},
+					type: 'post',
+					url: 'http://172.16.0.222:4689/socket',
+					dataType: 'json',
+					data: JSON.stringify(params),
+					success: function(data) { 
+						tl1.play();
+						$(".carDoorLeft").fadeOut();
+						$(".left_dotted,.carDoorLeftClose").fadeIn();
+						console.log(data);
+						console.log(JSON.stringify(params))
+					},
+					error: function(data) {
+						console.log(data) 
+					}
+				});
 			}
 			function clickLeftClose(){
-				tl1.reverse();
-				// var params = {};
-				// params.state = "false";
-				// params.type = "CtrlLeftFountDoor";
-				// params.action = "mControl";
-				// $.ajax({
-				// 	headers: {
-				// 		"Content-Type": "application/json; charset=utf-8"
-				// 	},
-				// 	type: 'post',
-				// 	url: 'http://172.16.0.222:4689/socket',
-				// 	dataType: 'json',
-				// 	data: JSON.stringify(params),
-				// 	success: function(data) { 
-				// 		console.log(data);
-				// 	},
-				// 	error: function(data) {
-				// 		console.log(data)
-				// 	}
-				// });
+				// ajax 关闭左门
+				var params = {};
+				params.state = false;
+				params.type = "CtrlLeftBehindDoor";
+				params.action = "revice";
+				console.log(params)
+				$.ajax({
+					headers: {
+						"Content-Type": "application/json; charset=utf-8"
+					},
+					type: 'post',
+					url: 'http://172.16.0.222:4689/socket',
+					dataType: 'json',
+					data: JSON.stringify(params),
+					success: function(data) { 
+						console.log(data);
+						tl1.reverse();
+						$(".carDoorLeft").fadeIn();
+						$(".left_dotted,.carDoorLeftClose").fadeOut();
+						console.log(JSON.stringify(params))
+					},
+					error: function(data) {
+						console.log(data)
+					}
+				});
 			}
 			// 左门动画
 			 
@@ -585,119 +658,252 @@
 			tl2.stop();
 			
 			function clickRightOpen(){
-				tl2.play();	
-				// var params = {};
-				// params.state = "true";
-				// params.type = "CtrlRightFountDoor";
-				// params.action = "mControl";
-				// $.ajax({
-				// 	headers: {
-				// 		"Content-Type": "application/json; charset=utf-8"
-				// 	},
-				// 	type: 'post',
-				// 	url: 'http://172.16.0.222:4689/socket',
-				// 	dataType: 'json',
-				// 	data: JSON.stringify(params),
-				// 	success: function(data) { 
-				// 		console.log(data);
-				// 	},
-				// 	error: function(data) {
-				// 		console.log(data)
-				// 	}
-				// });
+				// ajax 打开右门
+				var params = {};
+				params.state = true;
+				params.type = "CtrlRightBehindDoor";
+				params.action = "revice";
+				console.log(params)
+				$.ajax({
+					headers: {
+						"Content-Type": "application/json; charset=utf-8"
+					},
+					type: 'post',
+					url: 'http://172.16.0.222:4689/socket',
+					dataType: 'json',
+					data: JSON.stringify(params),
+					success: function(data) { 
+						console.log(data);
+						tl2.play();	
+						$(".carDoorRight").fadeOut();
+						$(".right_dotted,.carDoorRightClose").fadeIn();
+						console.log(JSON.stringify(params))
+					},
+					error: function(data) {
+						console.log(data) 
+					}
+				});
 			}
 			function clickRightClose(){
-				tl2.reverse();
-				// var params = {};
-				// params.state = "true";
-				// params.type = "CtrlRightFountDoor";
-				// params.action = "mControl";
-				// $.ajax({
-				// 	headers: {
-				// 		"Content-Type": "application/json; charset=utf-8"
-				// 	},
-				// 	type: 'post',
-				// 	url: 'http://172.16.0.222:4689/socket',
-				// 	dataType: 'json',
-				// 	data: JSON.stringify(params),
-				// 	success: function(data) { 
-				// 		console.log(data);
-				// 	},
-				// 	error: function(data) {
-				// 		console.log(data)
-				// 	}
-				// });
+				// ajax 关闭右门
+				var params = {};
+				params.state = false;
+				params.type = "CtrlRightBehindDoor";
+				params.action = "revice";
+				console.log(params)
+				$.ajax({
+					headers: {
+						"Content-Type": "application/json; charset=utf-8"
+					},
+					type: 'post',
+					url: 'http://172.16.0.222:4689/socket',
+					dataType: 'json',
+					data: JSON.stringify(params),
+					success: function(data) { 
+						console.log(data);
+						tl2.reverse();
+						$(".carDoorRight").fadeIn();
+						$(".right_dotted,.carDoorRightClose").fadeOut();
+						console.log(JSON.stringify(params))
+					},
+					error: function(data) {
+						console.log(data)
+					}
+				});
 			}
 			// 右门动画
+			// 主驾驶carDoorLeft2
+			function carDoorLeft2(){
+				var params = {};
+				params.state = carDoorLeft2State;
+				params.type = "CtrlLeftFountDoor";
+				params.action = "revice";
+				console.log(params)
+				$.ajax({
+					headers: {
+						"Content-Type": "application/json; charset=utf-8"
+					},
+					type: 'post',
+					url: 'http://172.16.0.222:4689/socket',
+					dataType: 'json',
+					data: JSON.stringify(params),
+					success: function(data) { 
+						console.log(data);
+						if(carDoorLeft2State){
+							carDoorLeft2State = false;
+						}else{
+							carDoorLeft2State = true;
+						}
+						console.log(JSON.stringify(params))
+					},
+					error: function(data) {
+						console.log(data)
+					}
+				});
+			}
+			// 副驾驶carDoorRight2
+			function carDoorRight2(){
+				var params = {};
+				params.state = carDoorRight2State;
+				params.type = "CtrlRightFountDoor";
+				params.action = "revice";
+				console.log(params)
+				$.ajax({
+					headers: {
+						"Content-Type": "application/json; charset=utf-8"
+					},
+					type: 'post',
+					url: 'http://172.16.0.222:4689/socket',
+					dataType: 'json',
+					data: JSON.stringify(params),
+					success: function(data) { 
+						console.log(data);
+						if(carDoorRight2State){
+							carDoorRight2State = false;
+						}else{
+							carDoorRight2State = true;
+						}
+						console.log(JSON.stringify(params))
+					},
+					error: function(data) {
+						console.log(data)
+					}
+				});
+			}
 			
 			// 全部关闭
 			function allClose(){
-				tl1.reverse();
-				tl2.reverse();
-				tl3.reverse();
-				tl4.reverse();
+				var params = {};
+				params.state = false;
+				params.type = "CtrlAll";
+				params.action = "revice";
+				console.log(params)
+				$.ajax({
+					headers: {
+						"Content-Type": "application/json; charset=utf-8"
+					},
+					type: 'post',
+					url: 'http://172.16.0.222:4689/socket', 
+					dataType: 'json',
+					data: JSON.stringify(params),
+					success: function(data) { 
+						console.log(data);
+						tl1.reverse();
+						tl2.reverse();
+						tl3.reverse();
+						tl4.reverse();
+						clickHoodState = true;
+						clickTrunkState = true;
+						carDoorLeft2State = true;
+						carDoorRight2State = true;
+
+						$(".carDoorLeft").fadeIn();
+						$(".left_dotted,.carDoorLeftClose").fadeOut();
+						$(".carDoorRight").fadeIn();
+						$(".right_dotted,.carDoorRightClose").fadeOut();
+					},
+					error: function(data) {
+						console.log(data)
+					}
+				});
 			}
 			
 			// 第三块区域
 			// 灯的封装方法
-			function deng(className){
+			function deng(className,imgclose,imgopen){
 				
 				var deng01 = document.getElementsByClassName(className);
 				if(deng01[0].className.indexOf('dengActive') == -1){
 					deng01[0].classList.add("dengActive");
+					console.log(deng01[0].children[0].src)
+					deng01[0].children[0].src = "img/wish/"+imgopen+".png";
 				}else{
 					deng01[0].classList.remove( "dengActive");
+					deng01[0].children[0].src = "img/wish/"+imgclose+".png";
 				}
 
-				// if(className == "deng06"){
-				// 	var params = {};
-				// 	params.state = "true";
-				// 	params.type = "CtrlLeftLight";
-				// 	params.action = "mControl";
-				// 	$.ajax({
-				// 		headers: {
-				// 			"Content-Type": "application/json; charset=utf-8"
-				// 		},
-				// 		type: 'post',
-				// 		url: 'http://172.16.0.222:4689/socket',
-				// 		dataType: 'json',
-				// 		data: JSON.stringify(params),
-				// 		success: function(data) { 
-				// 			console.log(data);
-				// 		},
-				// 		error: function(data) {
-				// 			console.log(data)
-				// 		}
-				// 	});
-				// }
+				if(className == "deng06"){
+					var params = {};
+					params.state = afterLight;
+					params.type = "CtrlBehindLight";
+					params.action = "revice";
+					
+					$.ajax({
+						headers: {
+							"Content-Type": "application/json; charset=utf-8"
+						},
+						type: 'post',
+						url: 'http://172.16.0.222:4689/socket',
+						dataType: 'json',
+						data: JSON.stringify(params),
+						success: function(data) { 
+							console.log(data);
+							if(afterLight){
+								afterLight = false;
+							}else{
+								afterLight = true;
+							}
+							console.log(JSON.stringify(params))
+						},
+						error: function(data) {
+							console.log(data)
+						}
+					});
+				}
 				
-				// if(className == "deng05"){
-				// 	var params = {};
-				// 	params.state = "true";
-				// 	params.type = "CtrlBehindLight";
-				// 	params.action = "mControl";
-				// 	$.ajax({
-				// 		headers: {
-				// 			"Content-Type": "application/json; charset=utf-8"
-				// 		},
-				// 		type: 'post',
-				// 		url: 'http://172.16.0.222:4689/socket',
-				// 		dataType: 'json',
-				// 		data: JSON.stringify(params),
-				// 		success: function(data) { 
-				// 			console.log(data);
-				// 		},
-				// 		error: function(data) {
-				// 			console.log(data)
-				// 		}
-				// 	});
-				// }
+				if(className == "deng05"){
+					var params = {};
+					params.state = frontLight;
+					params.type = "CtrlLeftLight";
+					params.action = "revice";
+					$.ajax({
+						headers: {
+							"Content-Type": "application/json; charset=utf-8"
+						},
+						type: 'post',
+						url: 'http://172.16.0.222:4689/socket', 
+						dataType: 'json',
+						data: JSON.stringify(params),
+						success: function(data) { 
+							console.log(data);
+							if(frontLight){
+								frontLight = false;
+							}else{
+								frontLight = true; 
+							}
+							console.log(JSON.stringify(params))
+						},
+						error: function(data) {
+							console.log(data)
+						}
+					});
+				}
 		
 			}
 			// 灯08切换的方法
 			$('.deng08').off("click");
 			$('.deng08').on("click","li",function(){	
 				$(this).children().addClass('dengActive2').parent().siblings().children().removeClass('dengActive2');
+				switch($(this).index()){
+					case 0:
+					$(this).siblings().find('img').eq(0).attr("src", "img/wish/deng06.png");
+					$(this).siblings().find('img').eq(1).attr("src", "img/wish/deng05.png");
+					break;
+					case 1:
+					$(this).find('img').attr("src", "img/wish/deng06o.png");
+					$(this).siblings().find('img').attr("src", "img/wish/deng05.png");
+					$('.car4 img').attr("src","img/wish/yuanguangdeng.png");
+					break;
+					case 2:
+					$(this).find('img').attr("src", "img/wish/deng05o.png");
+					$(this).siblings().find('img').attr("src", "img/wish/deng06.png");
+					$('.car4 img').attr("src","img/wish/jinguangdeng.png");
+					break;
+					case 3:
+					$(this).siblings().find('img').eq(0).attr("src", "img/wish/deng06.png");
+					$(this).siblings().find('img').eq(1).attr("src", "img/wish/deng05.png");
+					break;
+				}
 			});
 			
 			// 第四块区域

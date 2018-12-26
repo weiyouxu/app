@@ -65,8 +65,8 @@ body,html{font-size:1025%; }
 
 .footerSeetingUl{height: 188px;}
 .li1{margin: 50px auto 0;;}
-.leftAirconditionTemperature{margin: 46% 0 50% 0;}
-.rightAirconditionTemperature{margin: 46% 0 50% 0;}
+.leftAirconditionTemperature{margin: 46% 0 50% 0;font-size: 0.15rem}
+.rightAirconditionTemperature{margin: 46% 0 50% 0;font-size: 0.15rem}
 .icon07,.icon09{margin: 100% auto 0;}
 .leftSeatTemperature{font-size: 16px;position: absolute;top: 52px;right: 20px;}
 .rightSeatTemperature{font-size: 16px;position: absolute;top: 52px;left: 20px;}
