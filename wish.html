@@ -6,6 +6,7 @@
 		<title></title>
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<link href="css/mui.min.css" rel="stylesheet" />
+		<script src="js/wish.js"></script>
 		<link rel="stylesheet" type="text/css" href="css/main.css"/>
 		<link rel="stylesheet" type="text/css" href="css/wish.css"/>
 		<link rel="stylesheet" type="text/css" href="css/wishIpad.css"  media="screen and (min-width: 768px) and (max-width: 1023px)">
@@ -28,7 +29,7 @@
 			<div class="main">
 				<!-- 头部 -->
 				<div class="nav">
-					<span class="navClose"><!-- <img class="navCloseImg" src="img/wish/close.png" > --></span>
+					<span class="navClose"></span>
 					<span class="control navActive">控制</span>
 					<!-- <span class="setting">设置</span> -->
 					<div class="electricity navActive"><img src="img/wish/electricity.png" >充电</div>
@@ -100,9 +101,9 @@
 						<img class="chairBoxIcon02" src="img/wish/chairBox/icon01.png" alt="">
 						<img class="chairBoxIcon03" src="img/wish/chairBox/icon01.png" alt="">
 
-						<img class="chairBoxIcon04" src="img/wish/chairBox/icon01.png" alt="">
-						<img class="chairBoxIcon05" src="img/wish/chairBox/icon01.png" alt="">
-						<img class="chairBoxIcon06" src="img/wish/chairBox/icon01.png" alt="">
+						<img class="chairBoxIcon04" src="img/wish/chairBox/icon02.png" alt="">
+						<img class="chairBoxIcon05" src="img/wish/chairBox/icon02.png" alt="">
+						<img class="chairBoxIcon06" src="img/wish/chairBox/icon02.png" alt=""> 
 					</div>
 					<!-- 悬架 -->
 					<div class="box suspensionBox carSuspension">
@@ -144,7 +145,8 @@
 									<li>运动</li>
 									<li class="driveBoxActive">狂暴</li>
 								</ul>
-								<span class="">最大电池功率</span>
+								<span class="fontSize01">最大电池功率</span>
+								<span class="fontSize01">&nbsp;</span>
 								<p>转向模式</p>
 								<ul class="driveBox1Ul driveBox1UlClick">
 									<li class="driveBoxActive">舒适</li>
@@ -157,13 +159,13 @@
 								<ul class="driveBox1UlRight">
 									<li>湿滑路面辅助</li>
 								</ul>
-								<span>用于帮助车辆脱困于雪地，沙地或泥地</span>
+								<span class="fontSize01">用于帮助车辆脱困于雪地，沙地或泥地</span>
 								<p>缓行</p>
 								<ul class="driveBox1UlRight2 driveBox1UlClick">
 									<li class="driveBoxActive">关</li>
 									<li>开</li>
 								</ul>
-								<span>释放制动踏板后车辆缓慢移动</span>
+								<span class="fontSize01">释放制动踏板后车辆缓慢移动</span>
 							</div>
 						</div>
 						<div class="driveBox2">
@@ -173,7 +175,7 @@
 									<li>标准</li>
 									<li class="driveBoxActive">低</li>
 								</ul>
-								<span class="">“标准”增加里程并延长制动器寿命</span>
+								<span class="fontSize01">“标准”增加里程并延长制动器寿命</span>
 							</div>
 							<div class="driveBox2Right">
 								<p>长途模式</p>
@@ -272,6 +274,7 @@
 							</p>
 							<div class="mui-input-row mui-input-range">
 								<input type="range" min="0" max="100" value="100">
+								<span class="mui-tooltip">100</span>
 							</div>
 							<p>显示模式</p>
 							<ul class="showBox1Ul driveBox1UlClick">
@@ -512,7 +515,7 @@
 				params.state = clickHoodState;
 				params.type = "CtrlEngineCover";
 				params.action = "revice";
-				console.log(params)
+				// console.log(params)
 				
 				$.ajax({
 					headers: {
@@ -523,7 +526,7 @@
 					dataType: 'json',
 					data: JSON.stringify(params),
 					success: function(data) { 
-						console.log(data);
+						// console.log(data);
 						if(clickHoodState){
 							tl3.play();
 							clickHoodState = false;
@@ -531,7 +534,7 @@
 							tl3.reverse();
 							clickHoodState = true;
 						}
-						console.log(JSON.stringify(params))
+						// console.log(JSON.stringify(params))
 					},
 					error: function(data) {
 						console.log(data)
@@ -554,7 +557,7 @@
 				params.state = clickTrunkState;
 				params.type = "CtrlTrunk";
 				params.action = "revice"; 
-				console.log(params)
+				// console.log(params)
 				$.ajax({
 					headers: {
 						"Content-Type": "application/json; charset=utf-8"
@@ -571,7 +574,7 @@
 							tl4.reverse();
 							clickTrunkState = true;
 						}
-						console.log(JSON.stringify(params))
+						// console.log(JSON.stringify(params))
 					},
 					error: function(data) {
 						console.log(data)
@@ -595,7 +598,7 @@
 				params.action = "revice";
 				params.type = "CtrlLeftBehindDoor";
 				params.state = true;
-				console.log(params)
+				// console.log(params)
 				$.ajax({
 					headers: {
 						"Content-Type": "application/json; charset=utf-8"
@@ -608,8 +611,8 @@
 						tl1.play();
 						$(".carDoorLeft").fadeOut();
 						$(".left_dotted,.carDoorLeftClose").fadeIn();
-						console.log(data);
-						console.log(JSON.stringify(params))
+						// console.log(data);
+						// console.log(JSON.stringify(params))
 					},
 					error: function(data) {
 						console.log(data) 
@@ -622,7 +625,7 @@
 				params.state = false;
 				params.type = "CtrlLeftBehindDoor";
 				params.action = "revice";
-				console.log(params)
+				// console.log(params)
 				$.ajax({
 					headers: {
 						"Content-Type": "application/json; charset=utf-8"
@@ -632,11 +635,11 @@
 					dataType: 'json',
 					data: JSON.stringify(params),
 					success: function(data) { 
-						console.log(data);
+						// console.log(data);
 						tl1.reverse();
 						$(".carDoorLeft").fadeIn();
 						$(".left_dotted,.carDoorLeftClose").fadeOut();
-						console.log(JSON.stringify(params))
+						// console.log(JSON.stringify(params))
 					},
 					error: function(data) {
 						console.log(data)
@@ -663,7 +666,7 @@
 				params.state = true;
 				params.type = "CtrlRightBehindDoor";
 				params.action = "revice";
-				console.log(params)
+				// console.log(params)
 				$.ajax({
 					headers: {
 						"Content-Type": "application/json; charset=utf-8"
@@ -673,11 +676,11 @@
 					dataType: 'json',
 					data: JSON.stringify(params),
 					success: function(data) { 
-						console.log(data);
+						// console.log(data);
 						tl2.play();	
 						$(".carDoorRight").fadeOut();
 						$(".right_dotted,.carDoorRightClose").fadeIn();
-						console.log(JSON.stringify(params))
+						// console.log(JSON.stringify(params))
 					},
 					error: function(data) {
 						console.log(data) 
@@ -690,7 +693,7 @@
 				params.state = false;
 				params.type = "CtrlRightBehindDoor";
 				params.action = "revice";
-				console.log(params)
+				// console.log(params)
 				$.ajax({
 					headers: {
 						"Content-Type": "application/json; charset=utf-8"
@@ -700,11 +703,11 @@
 					dataType: 'json',
 					data: JSON.stringify(params),
 					success: function(data) { 
-						console.log(data);
+						// console.log(data);
 						tl2.reverse();
 						$(".carDoorRight").fadeIn();
 						$(".right_dotted,.carDoorRightClose").fadeOut();
-						console.log(JSON.stringify(params))
+						// console.log(JSON.stringify(params))
 					},
 					error: function(data) {
 						console.log(data)
@@ -718,7 +721,7 @@
 				params.state = carDoorLeft2State;
 				params.type = "CtrlLeftFountDoor";
 				params.action = "revice";
-				console.log(params)
+				// console.log(params)
 				$.ajax({
 					headers: {
 						"Content-Type": "application/json; charset=utf-8"
@@ -728,13 +731,13 @@
 					dataType: 'json',
 					data: JSON.stringify(params),
 					success: function(data) { 
-						console.log(data);
+						// console.log(data);
 						if(carDoorLeft2State){
 							carDoorLeft2State = false;
 						}else{
 							carDoorLeft2State = true;
 						}
-						console.log(JSON.stringify(params))
+						// console.log(JSON.stringify(params))
 					},
 					error: function(data) {
 						console.log(data)
@@ -747,7 +750,7 @@
 				params.state = carDoorRight2State;
 				params.type = "CtrlRightFountDoor";
 				params.action = "revice";
-				console.log(params)
+				// console.log(params)
 				$.ajax({
 					headers: {
 						"Content-Type": "application/json; charset=utf-8"
@@ -757,13 +760,13 @@
 					dataType: 'json',
 					data: JSON.stringify(params),
 					success: function(data) { 
-						console.log(data);
+						// console.log(data);
 						if(carDoorRight2State){
 							carDoorRight2State = false;
 						}else{
 							carDoorRight2State = true;
 						}
-						console.log(JSON.stringify(params))
+						// console.log(JSON.stringify(params))
 					},
 					error: function(data) {
 						console.log(data)
@@ -777,7 +780,7 @@
 				params.state = false;
 				params.type = "CtrlAll";
 				params.action = "revice";
-				console.log(params)
+				// console.log(params)
 				$.ajax({
 					headers: {
 						"Content-Type": "application/json; charset=utf-8"
@@ -787,7 +790,7 @@
 					dataType: 'json',
 					data: JSON.stringify(params),
 					success: function(data) { 
-						console.log(data);
+						// console.log(data);
 						tl1.reverse();
 						tl2.reverse();
 						tl3.reverse();
@@ -815,7 +818,7 @@
 				var deng01 = document.getElementsByClassName(className);
 				if(deng01[0].className.indexOf('dengActive') == -1){
 					deng01[0].classList.add("dengActive");
-					console.log(deng01[0].children[0].src)
+					// console.log(deng01[0].children[0].src)
 					deng01[0].children[0].src = "img/wish/"+imgopen+".png";
 				}else{
 					deng01[0].classList.remove( "dengActive");
@@ -837,13 +840,16 @@
 						dataType: 'json',
 						data: JSON.stringify(params),
 						success: function(data) { 
-							console.log(data);
+							// console.log(data);
 							if(afterLight){
 								afterLight = false;
+								$('.car4 img').attr("src","img/wish/yuanguangdeng.png");
 							}else{
 								afterLight = true;
+								$('.car4 img').attr("src","img/wish/car2.png");
 							}
-							console.log(JSON.stringify(params))
+							// console.log(JSON.stringify(params))
+							
 						},
 						error: function(data) {
 							console.log(data)
@@ -852,6 +858,7 @@
 				}
 				
 				if(className == "deng05"){
+					
 					var params = {};
 					params.state = frontLight;
 					params.type = "CtrlLeftLight";
@@ -865,13 +872,13 @@
 						dataType: 'json',
 						data: JSON.stringify(params),
 						success: function(data) { 
-							console.log(data);
+							// console.log(data);
 							if(frontLight){
 								frontLight = false;
 							}else{
 								frontLight = true; 
 							}
-							console.log(JSON.stringify(params))
+							// console.log(JSON.stringify(params))
 						},
 						error: function(data) {
 							console.log(data)
@@ -892,12 +899,12 @@
 					case 1:
 					$(this).find('img').attr("src", "img/wish/deng06o.png");
 					$(this).siblings().find('img').attr("src", "img/wish/deng05.png");
-					$('.car4 img').attr("src","img/wish/yuanguangdeng.png");
+					// $('.car4 img').attr("src","img/wish/yuanguangdeng.png");
 					break;
 					case 2:
 					$(this).find('img').attr("src", "img/wish/deng05o.png");
 					$(this).siblings().find('img').attr("src", "img/wish/deng06.png");
-					$('.car4 img').attr("src","img/wish/jinguangdeng.png");
+					// $('.car4 img').attr("src","img/wish/jinguangdeng.png");
 					break;
 					case 3:
 					$(this).siblings().find('img').eq(0).attr("src", "img/wish/deng06.png");
@@ -909,7 +916,7 @@
 			// 第四块区域
 			// 增加温度, 降低温度封装方法
 			function temperature(className,state){
-				console.log(state)
+				// console.log(state)
 				var temp = document.getElementsByClassName(className);
 				var num = parseFloat(temp[0].innerHTML);
 				if(state == "add"){
@@ -993,6 +1000,7 @@
 					$(".numB").html("0");
 				}
 			});
+
 		</script>
 	</body>
 
